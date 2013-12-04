@@ -1,0 +1,11 @@
+﻿## Title: TargetNameplateIndicator
+## Interface: 50001
+## Notes: Puts a texture on your target's nameplate to make them stand out. Configure by editing the options at the top of core.lua.
+## Author: Choonster
+## Version: 1.07
+
+LibNameplate-1.0\LibStub\LibStub.lua
+LibNameplate-1.0\CallbackHandler-1.0\CallbackHandler-1.0.xml
+LibNameplate-1.0\LibNameplate-1.0\lib.xml
+
+core.lua

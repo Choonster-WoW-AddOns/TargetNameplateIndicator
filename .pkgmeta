@@ -1,0 +1,6 @@
+package-as: TargetNameplateIndicator
+
+externals:
+    LibNameplate-1.0:
+	    url: svn://svn.wowace.com/wow/libnameplate-1-0/mainline/trunk
+		tag: latest
