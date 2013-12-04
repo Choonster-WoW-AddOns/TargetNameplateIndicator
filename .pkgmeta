@@ -3,3 +3,5 @@
 externals:
     LibNameplateRegistry-1.0: git://git.wowace.com/wow/libnameplateregistry-1-0/mainline.git
 
+tools-used:
+    - findglobals
