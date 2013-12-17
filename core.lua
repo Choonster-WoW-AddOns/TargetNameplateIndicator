@@ -102,7 +102,7 @@ function TNI:OnError_FatalIncompatibility(callback, incompatibilityType)
 	else
 		detailedMessage = "Something has gone terribly wrong!"
 	end
-	
+
 	errorPrint(true, "(Error Code: %s) %s", incompatibilityType, detailedMessage)
 end
 
@@ -131,7 +131,7 @@ local CurrentNameplate
 function TNI:UpdateIndicator(nameplate)
 	CurrentNameplate = nameplate
 	texture:ClearAllPoints()
-	
+
 	if nameplate then
 		texture:Show()
 		texture:SetPoint(TEXTURE_POINT, nameplate, ANCHOR_POINT, OFFSET_X, OFFSET_Y)
@@ -144,7 +144,7 @@ function TNI:OnTargetPlateOnScreen(callback, nameplate, plateData)
 	--@debug@
 	debugprint("Callback fired (target found)")
 	--@end-debug@
-	
+
 	self:UpdateIndicator(nameplate)
 end
 
@@ -152,7 +152,7 @@ function TNI:OnRecyclePlate(callback, nameplate, plateData)
 	--@debug@
 	debugprint("Callback fired (recycle)", nameplate == CurrentNameplate)
 	--@end-debug@
-	
+
 	if nameplate == CurrentNameplate then
 		self:UpdateIndicator()
 	end
@@ -160,11 +160,11 @@ end
 
 function TNI:PLAYER_TARGET_CHANGED()
 	local nameplate, plateData = TNI:GetPlateByGUID(UnitGUID("target"))
-	
+
 	--@debug@
 	debugprint("Player target changed", nameplate)
 	--@end-debug@
-	
+
 	if not nameplate then
 		TNI:UpdateIndicator()
 	end
