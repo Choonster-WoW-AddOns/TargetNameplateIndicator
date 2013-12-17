@@ -68,7 +68,17 @@ texture:SetSize(TEXTURE_WIDTH, TEXTURE_HEIGHT)
 
 
 --@debug@
-TNI:LNR_RegisterCallback("LNR_DEBUG", print)
+local DEBUG = false
+
+local function debugprint(...)
+	if DEBUG then
+		print("TNI DEBUG:", ...)
+	end
+end
+
+if DEBUG then
+	TNI:LNR_RegisterCallback("LNR_DEBUG", debugprint)
+end
 --@end-debug@
 
 -----
@@ -131,13 +141,17 @@ function TNI:UpdateIndicator(nameplate)
 end
 
 function TNI:OnTargetPlateOnScreen(callback, nameplate, plateData)
-	print("TNI: Callback fired (target found)")
+	--@debug@
+	debugprint("Callback fired (target found)")
+	--@end-debug@
 	
 	self:UpdateIndicator(nameplate)
 end
 
 function TNI:OnRecyclePlate(callback, nameplate, plateData)
-	print("TNI: Callback fired (recycle)", nameplate == CurrentNameplate)
+	--@debug@
+	debugprint("Callback fired (recycle)", nameplate == CurrentNameplate)
+	--@end-debug@
 	
 	if nameplate == CurrentNameplate then
 		self:UpdateIndicator()
@@ -146,7 +160,11 @@ end
 
 function TNI:PLAYER_TARGET_CHANGED()
 	local nameplate, plateData = TNI:GetPlateByGUID(UnitGUID("target"))
-	print("TNI: Player target changed", nameplate)
+	
+	--@debug@
+	debugprint("Player target changed", nameplate)
+	--@end-debug@
+	
 	if not nameplate then
 		TNI:UpdateIndicator()
 	end
