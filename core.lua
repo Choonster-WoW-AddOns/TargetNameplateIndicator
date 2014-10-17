@@ -7,19 +7,29 @@
 -------
 
 -- The path of the texture file you want to use relative to the main WoW directory (without the texture's file extension).
--- The AddOn includes twelve textures:
---	"Interface\\AddOns\\TargetNameplateIndicator\\Reticule"				-- Red targeting reticule (contributed by Dridzt of WoWI)
---	"Interface\\AddOns\\TargetNameplateIndicator\\RedArrow"				-- Red arrow pointing downwards (contributed by DohNotAgain of WoWI)
---	"Interface\\AddOns\\TargetNameplateIndicator\\NeonReticule"			-- Neon version of the reticule (contributed by mezmorizedck of Curse)
---	"Interface\\AddOns\\TargetNameplateIndicator\\NeonRedArrow"			-- Neon version of the red arrow (contributed by mezmorizedck of Curse)
---	"Interface\\AddOns\\TargetNameplateIndicator\\RedChevronArrow"		-- Red inverted triple chevron (contributed by OligoFriends of WoWI)
---	"Interface\\AddOns\\TargetNameplateIndicator\\PaleRedChevronArrow"	-- Pale red version of the chevron (contributed by OligoFriends of Curse/WoWI)
---	"Interface\\AddOns\\TargetNameplateIndicator\\arrow_tip_green"		-- Green 3D arrow (contributed by OligoFriends of Curse/WoWI)
---	"Interface\\AddOns\\TargetNameplateIndicator\\arrow_tip_red"		-- Red 3D arrow (contributed by OligoFriends of Curse/WoWI)
---	"Interface\\AddOns\\TargetNameplateIndicator\\skull"				-- Skull and crossbones (contributed by OligoFriends of Curse/WoWI)
---	"Interface\\AddOns\\TargetNameplateIndicator\\circles_target"		-- Red concentric circles in the style of a target (contributed by OligoFriends of Curse/WoWI)
---	"Interface\\AddOns\\TargetNameplateIndicator\\red_star"				-- Red star with gold outline (contributed by OligoFriends of Curse/WoWI)
---	"Interface\\AddOns\\TargetNameplateIndicator\\greenarrowtarget"		-- Neon green arrow with a red target (contributed by mezmorizedck of Curse)
+-- The AddOn includes twenty textures:
+--	Reticule				-- Red targeting reticule (contributed by Dridzt of WoWI)
+--	RedArrow				-- Red arrow pointing downwards (contributed by DohNotAgain of WoWI)
+--	NeonReticule			-- Neon version of the reticule (contributed by mezmorizedck of Curse)
+--	NeonRedArrow			-- Neon version of the red arrow (contributed by mezmorizedck of Curse)
+--	RedChevronArrow			-- Red inverted triple chevron (contributed by OligoFriends of WoWI)
+--	PaleRedChevronArrow		-- Pale red version of the chevron (contributed by OligoFriends of Curse/WoWI)
+--	arrow_tip_green			-- Green 3D arrow (contributed by OligoFriends of Curse/WoWI)
+--	arrow_tip_red			-- Red 3D arrow (contributed by OligoFriends of Curse/WoWI)
+--	skull					-- Skull and crossbones (contributed by OligoFriends of Curse/WoWI)
+--	circles_target			-- Red concentric circles in the style of a target (contributed by OligoFriends of Curse/WoWI)
+--	red_star				-- Red star with gold outline (contributed by OligoFriends of Curse/WoWI)
+--	greenarrowtarget		-- Neon green arrow with a red target (contributed by mezmorizedck of Curse)
+--	BlueArrow				-- Blue arrow pointing downwards (contributed by Imithat of WoWI)
+--	bluearrow1				-- Abstract style blue arrow pointing downwards (contributed by Imithat of WoWI)
+--	gearsofwar				-- Gears of War logo (contributed by Imithat of WoWI)
+--	malthael				-- Malthael (Diablo) logo (contributed by Imithat of WoWI)
+--	NewRedArrow				-- Red arrow pointing downwards, same style as BlueArrow (contributed by Imithat of WoWI)
+--	NewSkull				-- Skull with gas mask (contributed by Imithat of WoWI)
+--	PurpleArrow				-- Abstract style purple arrow pointing downwards, same style as bluearrow1 (contributed by Imithat of WoWI)
+--	Shield					-- Kite shield with sword and crossed spears/polearms (contributed by Imithat of WoWI)
+
+-- All of the textures listed above need to be prefixed with "Interface\\AddOns\\TargetNameplateIndicator\\" like the default value below.
 local TEXTURE_PATH = "Interface\\AddOns\\TargetNameplateIndicator\\Reticule"
 
 -- You can add your own texture by placing a TGA image in the WoW\Interface\AddOns\TargetNameplateIndicator directory and changing the string after TEXTURE_PATH to match its name.
