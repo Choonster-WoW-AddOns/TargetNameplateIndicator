@@ -1,5 +1,5 @@
 ﻿## Title: TargetNameplateIndicator
-## Interface: 60000
+## Interface: 70000
 ## Notes: Puts a texture on your target's nameplate to make them stand out. Configure by editing the options at the top of core.lua.
 ## Author: Choonster
 ## Version: @project-version@
