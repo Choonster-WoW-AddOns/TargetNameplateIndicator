@@ -5,6 +5,7 @@
 - Remove handlers for callbacks that are no longer fired by LNR
 - Remove Ace3 from the OptionalDeps and X-Embeds TOC tags
 	- TNI doesn't actually use Ace3 at all
+- Rename .pkgmeta to pkgmeta.yaml for CurseForge's new packager
 
 ## 1.11
 - Bump TOC Interface version to 7.0
