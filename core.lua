@@ -103,11 +103,9 @@ end
 
 function TNI:OnError_FatalIncompatibility(callback, incompatibilityType)
 	local detailedMessage
-	if incompatibilityType == "NAMEPLATE_MANIFEST" then
-		detailedMessage = "Nameplate frames are not in the expected format."
-	elseif incompatibilityType == "HOOK: OnHide" or incompatibilityType == "HOOK: OnShow" then
+	if incompatibilityType == "TRACKING: OnHide" or incompatibilityType == "TRACKING: OnShow" then
 		detailedMessage = "LibNameplateRegistry missed several nameplate show and hide events."
-	elseif incompatibilityType == "HOOK: OnShow missed" then
+	elseif incompatibilityType == "TRACKING: OnShow missed" then
 		detailedMessage = "A nameplate was hidden but never shown."
 	else
 		detailedMessage = "Something has gone terribly wrong!"
@@ -116,22 +114,7 @@ function TNI:OnError_FatalIncompatibility(callback, incompatibilityType)
 	errorPrint(true, "(Error Code: %s) %s", incompatibilityType, detailedMessage)
 end
 
-function TNI:OnError_GuidIdHampered(callback, message)
-	errorPrint(false, message)
-end
-
-function TNI:OnError_SetParentAlert(callback, badAddOn, message)
-	errorPrint(false, message)
-end
-
-function TNI:OnError_SetScriptAlert(callback, badAddOn, message)
-	errorPrint(false, message)
-end
-
 TNI:LNR_RegisterCallback("LNR_ERROR_FATAL_INCOMPATIBILITY", "OnError_FatalIncompatibility")
-TNI:LNR_RegisterCallback("LNR_ERROR_GUID_ID_HAMPERED", "OnError_GuidIdHampered")
-TNI:LNR_RegisterCallback("LNR_ERROR_SETPARENT_ALERT", "OnError_SetParentAlert")
-TNI:LNR_RegisterCallback("LNR_ERROR_SETSCRIPT_ALERT", "OnError_SetScriptAlert")
 
 ------
 -- Nameplate callbacks

@@ -1,3 +1,11 @@
+## 1.12
+- Bump TOC Interface version to 7.1
+- Update LibNameplateRegistry to 0.18T
+- Change the `LNR_ERROR_FATAL_INCOMPATIBILITY` callback to use the correct `incompatibilityType` values and remove ones that are no longer used by LNR
+- Remove handlers for callbacks that are no longer fired by LNR
+- Remove Ace3 from the OptionalDeps and X-Embeds TOC tags
+	- TNI doesn't actually use Ace3 at all
+
 ## 1.11
 - Bump TOC Interface version to 7.0
 - Add to p3lim's AddOn Packager Proxy
