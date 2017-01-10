@@ -1,3 +1,6 @@
+## 1.13
+- Fix LibStub and CallbackHandler not being included in the packaged AddOn
+
 ## 1.12
 - Bump TOC Interface version to 7.1
 - Update LibNameplateRegistry to 0.18T
