@@ -1,7 +1,9 @@
 ﻿package-as: TargetNameplateIndicator
 
 externals:
-    LibNameplateRegistry-1.0: git://git.wowace.com/wow/libnameplateregistry-1-0/mainline.git
+    LibNameplateRegistry-1.0: https://repos.wowace.com/wow/libnameplateregistry-1-0
+    LibNameplateRegistry-1.0/Libs/LibStub: https://repos.wowace.com/wow/libstub/trunk
+    LibNameplateRegistry-1.0/Libs/CallbackHandler-1.0: https://repos.wowace.com/wow/callbackhandler/trunk/CallbackHandler-1.0
 
 tools-used:
     - findglobals
