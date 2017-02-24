@@ -10,6 +10,10 @@ ns.CONFIG = CONFIG
 -- This will allow you to restore your custom configuration with ease.
 -- Also back up any custom textures you add.
 
+-- Changes made to this file will take effect when you reload your UI (e.g. using the /reload slash command),
+-- log out and back in or restart the game.
+-- New files won't be accessible until you restart the game.
+
 -------
 -- The first three variables control the appearance of the texture.
 -------
