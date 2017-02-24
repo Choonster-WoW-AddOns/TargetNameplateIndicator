@@ -1,3 +1,7 @@
+## 1.15
+- Change the default texture back to Reticule
+- Fix typo in file name of neon green arrow texture
+
 ## 1.14
 - Move configuration variables into config.lua
 - Move textures to Textures directory
