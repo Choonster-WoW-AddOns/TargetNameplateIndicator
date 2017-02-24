@@ -37,8 +37,8 @@ ns.CONFIG = CONFIG
 --	PurpleArrow				-- Abstract style purple arrow pointing downwards, same style as bluearrow1 (contributed by Imithat of WoWI)
 --	Shield					-- Kite shield with sword and crossed spears/polearms (contributed by Imithat of WoWI)
 
--- All of the textures listed above need to be prefixed with "Interface\\AddOns\\TargetNameplateIndicator\\" like the default value below.
-CONFIG.TEXTURE_PATH = "Interface\\AddOns\\TargetNameplateIndicator\\circles_target"
+-- All of the textures listed above need to be prefixed with "Interface\\AddOns\\TargetNameplateIndicator\\Textures\\" like the default value below.
+CONFIG.TEXTURE_PATH = "Interface\\AddOns\\TargetNameplateIndicator\\Textures\\circles_target"
 
 -- You can add your own texture by placing a TGA image in the WoW\Interface\AddOns\TargetNameplateIndicator directory and changing the string after TEXTURE_PATH to match its name.
 -- See the "filename" argument on the following page for details on the required texture file format:
