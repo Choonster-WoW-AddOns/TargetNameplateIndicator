@@ -1,3 +1,10 @@
+## 1.14
+- Move configuration variables into config.lua
+- Move textures to Textures directory
+- Add screenshots to the repository
+	- They won't be packaged with the AddOn
+- Add neon green arrow texture provided by Nokiya420 of Curse
+
 ## 1.13
 - Fix LibStub and CallbackHandler not being included in the packaged AddOn
 
