@@ -9,5 +9,8 @@ tools-used:
     - findglobals
 
 manual-changelog:
-   filename: CHANGELOG.md
-   markup-type: markdown
+    filename: CHANGELOG.md
+    markup-type: markdown
+
+ignore:
+    - Screenshots
