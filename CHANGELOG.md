@@ -1,3 +1,6 @@
+## 1.16
+- Add explanation of when changes will take effect to config.lua
+
 ## 1.15
 - Change the default texture back to Reticule
 - Fix typo in file name of neon green arrow texture
