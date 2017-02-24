@@ -39,7 +39,7 @@ ns.CONFIG = CONFIG
 --	NeonGreenArrow			-- Green version of the neon red arrow (contributed by Nokiya420 of Curse)
 
 -- All of the textures listed above need to be prefixed with "Interface\\AddOns\\TargetNameplateIndicator\\Textures\\" like the default value below.
-CONFIG.TEXTURE_PATH = "Interface\\AddOns\\TargetNameplateIndicator\\Textures\\circles_target"
+CONFIG.TEXTURE_PATH = "Interface\\AddOns\\TargetNameplateIndicator\\Textures\\Reticule"
 
 -- You can add your own texture by placing a TGA image in the WoW\Interface\AddOns\TargetNameplateIndicator directory and changing the string after TEXTURE_PATH to match its name.
 -- See the "filename" argument on the following page for details on the required texture file format:
