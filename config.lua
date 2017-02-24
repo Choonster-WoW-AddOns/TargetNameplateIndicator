@@ -15,7 +15,7 @@ ns.CONFIG = CONFIG
 -------
 
 -- The path of the texture file you want to use relative to the main WoW directory (without the texture's file extension).
--- The AddOn includes twenty textures:
+-- The AddOn includes twenty one textures:
 --	Reticule				-- Red targeting reticle (contributed by Dridzt of WoWI)
 --	RedArrow				-- Red arrow pointing downwards (contributed by DohNotAgain of WoWI)
 --	NeonReticule			-- Neon version of the reticule (contributed by mezmorizedck of Curse)
@@ -36,6 +36,7 @@ ns.CONFIG = CONFIG
 --	NewSkull				-- Skull with gas mask (contributed by Imithat of WoWI)
 --	PurpleArrow				-- Abstract style purple arrow pointing downwards, same style as bluearrow1 (contributed by Imithat of WoWI)
 --	Shield					-- Kite shield with sword and crossed spears/polearms (contributed by Imithat of WoWI)
+--	NeonGreenArrow			-- Green version of the neon red arrow (contributed by Nokiya420 of Curse)
 
 -- All of the textures listed above need to be prefixed with "Interface\\AddOns\\TargetNameplateIndicator\\Textures\\" like the default value below.
 CONFIG.TEXTURE_PATH = "Interface\\AddOns\\TargetNameplateIndicator\\Textures\\circles_target"
