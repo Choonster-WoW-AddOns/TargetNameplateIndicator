@@ -1,3 +1,8 @@
+## 1.17
+- Bump TOC Interface version to 7.2
+- Add textures from ContinuousQ of Curse
+- Fix Notes tag in TOC to mention options in config.lua instead of core.lua
+
 ## 1.16
 - Add explanation of when changes will take effect to config.lua
 
