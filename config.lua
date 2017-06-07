@@ -24,7 +24,7 @@ ns.CONFIG = CONFIG
 --	RedArrow				-- Red arrow pointing downwards (contributed by DohNotAgain of WoWI)
 --	NeonReticule			-- Neon version of the reticule (contributed by mezmorizedck of Curse)
 --	NeonRedArrow			-- Neon version of the red arrow (contributed by mezmorizedck of Curse)
---	RedChevronArrow			-- Red inverted triple chevron (contributed by OligoFriends of WoWI)
+--	RedChevronArrow			-- Red inverted triple chevron (contributed by OligoFriends of Curse/WoWI)
 --	PaleRedChevronArrow		-- Pale red version of the chevron (contributed by OligoFriends of Curse/WoWI)
 --	arrow_tip_green			-- Green 3D arrow (contributed by OligoFriends of Curse/WoWI)
 --	arrow_tip_red			-- Red 3D arrow (contributed by OligoFriends of Curse/WoWI)
