@@ -20,7 +20,7 @@ ns.CONFIG = CONFIG
 
 -- The path of the texture file you want to use relative to the main WoW directory (without the texture's file extension).
 -- The AddOn includes thirty textures:
---	Reticule				-- Red targeting reticle (contributed by Dridzt of WoWI)
+--	Reticule				-- Red targeting reticule (contributed by Dridzt of WoWI)
 --	RedArrow				-- Red arrow pointing downwards (contributed by DohNotAgain of WoWI)
 --	NeonReticule			-- Neon version of the reticule (contributed by mezmorizedck of Curse)
 --	NeonRedArrow			-- Neon version of the red arrow (contributed by mezmorizedck of Curse)
