@@ -50,6 +50,7 @@ ns.CONFIG = CONFIG
 --	Q_GreenTarget			-- Green target arrow (contributed by ContinuousQ of Curse)
 --	Q_RedTarget				-- Red target arrow (contributed by ContinuousQ of Curse)
 --	Q_WhiteTarget			-- White target arrow (contributed by ContinuousQ of Curse)
+--	Hunters_Mark			-- Red Hunter's Mark Arrow (contributed by thisguyyouknow of Curse)
 
 -- All of the textures listed above need to be prefixed with "Interface\\AddOns\\TargetNameplateIndicator\\Textures\\" like the default value below.
 CONFIG.TEXTURE_PATH = "Interface\\AddOns\\TargetNameplateIndicator\\Textures\\Reticule"
