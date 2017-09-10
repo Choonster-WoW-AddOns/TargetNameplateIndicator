@@ -1,3 +1,8 @@
+## 1.18
+- Use consistent spelling of reticule in config.lua
+- Fix comment of RedChevronArrow texture not mentioning OligoFriends' Curse profile
+- Add Red Hunter's Mark Arrow texture provided by thisguyyouknow of Curse
+
 ## 1.17
 - Bump TOC Interface version to 7.2
 - Add textures from ContinuousQ of Curse
