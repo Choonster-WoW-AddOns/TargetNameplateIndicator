@@ -1,3 +1,6 @@
+## 1.19
+- New release to try and fix CurseForge packager error.
+
 ## 1.18
 - Use consistent spelling of reticule in config.lua
 - Fix comment of RedChevronArrow texture not mentioning OligoFriends' Curse profile
