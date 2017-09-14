@@ -1,3 +1,6 @@
+## 1.21
+- Bump TOC Interface version to 7.3
+
 ## 1.20
 - Another new release to try and fix CurseForge packager error. MrFlamegoat says it should be fixed now.
 
