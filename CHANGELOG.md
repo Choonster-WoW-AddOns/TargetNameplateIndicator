@@ -1,3 +1,6 @@
+## 1.20
+- Another new release to try and fix CurseForge packager error. MrFlamegoat says it should be fixed now.
+
 ## 1.19
 - New release to try and fix CurseForge packager error.
 
