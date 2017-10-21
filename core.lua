@@ -4,19 +4,16 @@
 ------------------------------------------------------
 
 -- List globals here for Mikk's FindGlobals script
--- GLOBALS: UnitGUID, print
+-- GLOBALS: UnitGUID, UnitIsFriend, print
 
 local addon, ns = ...
-local CONFIG = ns.CONFIG
+local FRIENDLY, HOSTILE = ns.CONFIG.FRIENDLY, ns.CONFIG.HOSTILE
 
 local TNI = CreateFrame("Frame", "TargetNameplateIndicator")
 
 LibStub("LibNameplateRegistry-1.0"):Embed(TNI)
 
 local texture = TNI:CreateTexture("$parentTexture", "OVERLAY")
-texture:SetTexture(CONFIG.TEXTURE_PATH)
-texture:SetSize(CONFIG.TEXTURE_WIDTH, CONFIG.TEXTURE_HEIGHT)
-
 
 --@debug@
 local DEBUG = false
@@ -66,9 +63,13 @@ function TNI:UpdateIndicator(nameplate)
 	CurrentNameplate = nameplate
 	texture:ClearAllPoints()
 
+	local config = UnitIsFriend("player", "target") and FRIENDLY or HOSTILE
+	
 	if nameplate then
 		texture:Show()
-		texture:SetPoint(CONFIG.TEXTURE_POINT, nameplate, CONFIG.ANCHOR_POINT, CONFIG.OFFSET_X, CONFIG.OFFSET_Y)
+		texture:SetTexture(config.TEXTURE_PATH)
+		texture:SetSize(config.TEXTURE_WIDTH, config.TEXTURE_HEIGHT)
+		texture:SetPoint(config.TEXTURE_POINT, nameplate, config.ANCHOR_POINT, config.OFFSET_X, config.OFFSET_Y)
 	else
 		texture:Hide()
 	end
