@@ -1,3 +1,6 @@
+## 1.22
+- Add support for separate friendly and hostile target indicator configurations
+
 ## 1.21
 - Bump TOC Interface version to 7.3
 
