@@ -1,3 +1,7 @@
+## 1.23
+- Add support for separate self target indicator options (for the class resource bars, which are implemented as a nameplate)
+- Add per-target type option to show/hide target indicator
+
 ## 1.22
 - Add support for separate friendly and hostile target indicator configurations
 
