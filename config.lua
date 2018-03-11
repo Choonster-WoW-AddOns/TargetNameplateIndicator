@@ -1,5 +1,5 @@
 local _, ns = ...
-local CONFIG = { FRIENDLY = {}, HOSTILE = {} }
+local CONFIG = { SELF = {}, FRIENDLY = {}, HOSTILE = {} }
 ns.CONFIG = CONFIG
 
 ---------------------
@@ -14,10 +14,20 @@ ns.CONFIG = CONFIG
 -- log out and back in or restart the game.
 -- New files won't be accessible until you restart the game.
 
--- Config variables that start with CONFIG.FRIENDLY are used for friendly targets and config variables that start with CONFIG.HOSTILE are used for hostile targets.
+-- Config variables that start with CONFIG.SELF are used when targeting yourself, config variables that start CONFIG.FRIENDLY are used for friendly targets and config variables that start with CONFIG.HOSTILE are used for hostile targets.
 
 -------
--- The first three variables control the appearance of the texture.
+-- These variables control whether the texture is visible.
+-------
+
+CONFIG.SELF.ENABLED = true
+
+CONFIG.FRIENDLY.ENABLED = true
+
+CONFIG.HOSTILE.ENABLED = true
+
+-------
+-- These variables control the appearance of the texture.
 -------
 
 -- The path of the texture file you want to use relative to the main WoW directory (without the texture's file extension).
@@ -55,6 +65,8 @@ ns.CONFIG = CONFIG
 --	Hunters_Mark			-- Red Hunter's Mark Arrow (contributed by thisguyyouknow of Curse)
 
 -- All of the textures listed above need to be prefixed with "Interface\\AddOns\\TargetNameplateIndicator\\Textures\\" like the default value below.
+CONFIG.SELF.TEXTURE_PATH = "Interface\\AddOns\\TargetNameplateIndicator\\Textures\\Reticule"
+
 CONFIG.FRIENDLY.TEXTURE_PATH = "Interface\\AddOns\\TargetNameplateIndicator\\Textures\\Reticule"
 
 CONFIG.HOSTILE.TEXTURE_PATH  = "Interface\\AddOns\\TargetNameplateIndicator\\Textures\\Reticule"
@@ -71,6 +83,9 @@ CONFIG.HOSTILE.TEXTURE_PATH  = "Interface\\AddOns\\TargetNameplateIndicator\\Tex
 
 
 -- The height/width of the texture. Using a height:width ratio different to that of the texture file may result in distortion.
+CONFIG.SELF.TEXTURE_HEIGHT = 50
+CONFIG.SELF.TEXTURE_WIDTH  = 50
+
 CONFIG.FRIENDLY.TEXTURE_HEIGHT = 50
 CONFIG.FRIENDLY.TEXTURE_WIDTH  = 50
 
@@ -78,11 +93,16 @@ CONFIG.HOSTILE.TEXTURE_HEIGHT  = 50
 CONFIG.HOSTILE.TEXTURE_WIDTH   = 50
 
 -------
--- These four variables control how the texture is anchored to the nameplate.
+-- These variables control how the texture is anchored to the nameplate.
 -------
 
 -- Used in texture:SetPoint(TEXTURE_POINT, nameplate, ANCHOR_POINT, OFFSET_X, OFFSET_Y)
 -- See http://www.wowpedia.org/API_Region_SetPoint for explanation.
+CONFIG.SELF.TEXTURE_POINT = "BOTTOM"   -- The point of the texture that should be anchored to the nameplate.
+CONFIG.SELF.ANCHOR_POINT  = "TOP"	   -- The point of the nameplate the texture should be anchored to.
+CONFIG.SELF.OFFSET_X = 0 			   -- The x/y offset of the texture relative to the anchor point.
+CONFIG.SELF.OFFSET_Y = 5
+
 CONFIG.FRIENDLY.TEXTURE_POINT = "BOTTOM"   -- The point of the texture that should be anchored to the nameplate.
 CONFIG.FRIENDLY.ANCHOR_POINT  = "TOP"	   -- The point of the nameplate the texture should be anchored to.
 CONFIG.FRIENDLY.OFFSET_X = 0 			   -- The x/y offset of the texture relative to the anchor point.

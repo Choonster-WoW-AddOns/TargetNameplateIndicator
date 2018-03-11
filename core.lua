@@ -7,7 +7,7 @@
 -- GLOBALS: UnitGUID, UnitIsFriend, print
 
 local addon, ns = ...
-local FRIENDLY, HOSTILE = ns.CONFIG.FRIENDLY, ns.CONFIG.HOSTILE
+local SELF, FRIENDLY, HOSTILE = ns.CONFIG.SELF, ns.CONFIG.FRIENDLY, ns.CONFIG.HOSTILE
 
 local TNI = CreateFrame("Frame", "TargetNameplateIndicator")
 
@@ -63,9 +63,9 @@ function TNI:UpdateIndicator(nameplate)
 	CurrentNameplate = nameplate
 	texture:ClearAllPoints()
 
-	local config = UnitIsFriend("player", "target") and FRIENDLY or HOSTILE
+	local config = UnitIsUnit("player", "target") and SELF or UnitIsFriend("player", "target") and FRIENDLY or HOSTILE
 	
-	if nameplate then
+	if nameplate and config.ENABLED then
 		texture:Show()
 		texture:SetTexture(config.TEXTURE_PATH)
 		texture:SetSize(config.TEXTURE_WIDTH, config.TEXTURE_HEIGHT)
