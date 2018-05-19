@@ -4,19 +4,19 @@
 ------------------------------------------------------
 
 -- List globals here for Mikk's FindGlobals script
--- GLOBALS: UnitGUID, UnitIsFriend, print
+-- GLOBALS: UnitIsUnit, UnitGUID, UnitIsFriend, CreateFrame, Mixin, print
 
 local addon, ns = ...
-local SELF, FRIENDLY, HOSTILE = ns.CONFIG.SELF, ns.CONFIG.FRIENDLY, ns.CONFIG.HOSTILE
+local CONFIG = ns.CONFIG
+local SELF, FRIENDLY, HOSTILE = CONFIG.SELF, CONFIG.FRIENDLY, CONFIG.HOSTILE
 
 local TNI = CreateFrame("Frame", "TargetNameplateIndicator")
+local LNR = LibStub("LibNameplateRegistry-1.0")
 
-LibStub("LibNameplateRegistry-1.0"):Embed(TNI)
-
-local texture = TNI:CreateTexture("$parentTexture", "OVERLAY")
+LNR:Embed(TNI)
 
 --@debug@
-local DEBUG = false
+local DEBUG = true
 
 local function debugprint(...)
 	if DEBUG then
@@ -57,58 +57,112 @@ TNI:LNR_RegisterCallback("LNR_ERROR_FATAL_INCOMPATIBILITY", "OnError_FatalIncomp
 ------
 -- Nameplate callbacks
 ------
-local CurrentNameplate
+local Indicator = {}
 
-function TNI:UpdateIndicator(nameplate)
-	CurrentNameplate = nameplate
-	texture:ClearAllPoints()
+function Indicator:Update(nameplate)
+	self.currentNameplate = nameplate
+	self.Texture:ClearAllPoints()
 
-	local config = UnitIsUnit("player", "target") and SELF or UnitIsFriend("player", "target") and FRIENDLY or HOSTILE
-	
+	local config = UnitIsUnit("player", self.unit) and SELF or UnitIsFriend("player", self.unit) and FRIENDLY or HOSTILE
+
 	if nameplate and config.ENABLED then
-		texture:Show()
-		texture:SetTexture(config.TEXTURE_PATH)
-		texture:SetSize(config.TEXTURE_WIDTH, config.TEXTURE_HEIGHT)
-		texture:SetPoint(config.TEXTURE_POINT, nameplate, config.ANCHOR_POINT, config.OFFSET_X, config.OFFSET_Y)
+		self.Texture:Show()
+		self.Texture:SetTexture(config.TEXTURE_PATH)
+		self.Texture:SetSize(config.TEXTURE_WIDTH, config.TEXTURE_HEIGHT)
+		self.Texture:SetPoint(config.TEXTURE_POINT, nameplate, config.ANCHOR_POINT, config.OFFSET_X, config.OFFSET_Y)
 	else
-		texture:Hide()
+		self.Texture:Hide()
 	end
 end
 
-function TNI:OnTargetPlateOnScreen(callback, nameplate, plateData)
+function Indicator:OnRecyclePlate(callback, nameplate, plateData)
 	--@debug@
-	debugprint("Callback fired (target found)")
+	debugprint("Callback fired (recycle)", self.unit, nameplate == self.currentNameplate)
 	--@end-debug@
 
-	self:UpdateIndicator(nameplate)
-end
-
-function TNI:OnRecyclePlate(callback, nameplate, plateData)
-	--@debug@
-	debugprint("Callback fired (recycle)", nameplate == CurrentNameplate)
-	--@end-debug@
-
-	if nameplate == CurrentNameplate then
-		self:UpdateIndicator()
+	if nameplate == self.currentNameplate then
+		self:Update()
 	end
 end
 
-function TNI:PLAYER_TARGET_CHANGED()
-	local nameplate, plateData = TNI:GetPlateByGUID(UnitGUID("target"))
+local function CreateIndicator(unit)
+	local indicator = CreateFrame("Frame", "TargetNameplateIndicator_" .. unit)
+	indicator.Texture = indicator:CreateTexture("$parentTexture", "OVERLAY")
 
-	--@debug@
-	debugprint("Player target changed", nameplate)
-	--@end-debug@
+	indicator.unit = unit
 
-	if not nameplate then
-		TNI:UpdateIndicator()
-	end
+	LNR:Embed(indicator)
+	Mixin(indicator, Indicator)
+
+	indicator:LNR_RegisterCallback("LNR_ON_RECYCLE_PLATE", "OnRecyclePlate")
+
+	indicator:SetScript("OnEvent", function(self, event, ...)
+		self[event](self, ...)
+	end)
+
+	return indicator
 end
 
-TNI:LNR_RegisterCallback("LNR_ON_TARGET_PLATE_ON_SCREEN", "OnTargetPlateOnScreen")
-TNI:LNR_RegisterCallback("LNR_ON_RECYCLE_PLATE", "OnRecyclePlate")
+------
+-- Target Indicator
+------
 
-TNI:RegisterEvent("PLAYER_TARGET_CHANGED")
-TNI:SetScript("OnEvent", function(self, event, ...)
-	self[event](self, ...)
-end)
+if CONFIG.TARGET_ENABLED then
+	local TargetIndicator = CreateIndicator("target")
+
+	function TargetIndicator:PLAYER_TARGET_CHANGED()
+		local nameplate, plateData = self:GetPlateByGUID(UnitGUID("target"))
+
+		--@debug@
+		debugprint("Player target changed", nameplate)
+		--@end-debug@
+
+		if not nameplate then
+			self:Update()
+		end
+	end
+
+	function TargetIndicator:OnTargetPlateOnScreen(callback, nameplate, plateData)
+		--@debug@
+		debugprint("Callback fired (target found)")
+		--@end-debug@
+
+		self:Update(nameplate)
+	end
+
+	TargetIndicator:RegisterEvent("PLAYER_TARGET_CHANGED")
+	TargetIndicator:LNR_RegisterCallback("LNR_ON_TARGET_PLATE_ON_SCREEN", "OnTargetPlateOnScreen")
+end
+
+------
+-- Mouseover Indicator
+------
+
+if CONFIG.MOUSEOVER_ENABLED then
+	local MouseoverIndicator = CreateIndicator("mouseover")
+
+	function MouseoverIndicator:OnUpdate()
+		-- If there's a current nameplate and it's still the mouseover unit, do nothing
+		if self.currentNameplate and UnitIsUnit("mouseover", self.currentNameplate.namePlateUnitToken) then return end
+
+		-- If there isn't a current nameplate and there's no mouseover unit, do nothing
+		if not self.currentNameplate and not UnitExists("mouseover") then return end
+
+		local nameplate, plateData = self:GetPlateByGUID(UnitGUID("mouseover"))
+
+		local isMouseoverTarget = UnitIsUnit("mouseover", "target")
+
+		--@debug@
+		debugprint("Player mouseover changed", nameplate, "isMouseoverTarget?", isMouseoverTarget)
+		--@end-debug@
+
+		-- If the player has their mouse over a unit other than their target or the target indicator is disabled, update the mouseover indicator; otherwise hide it
+		if not isMouseoverTarget or not CONFIG.TARGET_ENABLED then
+			self:Update(nameplate)
+		else
+			self:Update(nil)
+		end
+	end
+
+	MouseoverIndicator:SetScript("OnUpdate", MouseoverIndicator.OnUpdate)
+end
