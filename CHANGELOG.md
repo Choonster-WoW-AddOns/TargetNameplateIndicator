@@ -1,3 +1,6 @@
+## 1.24
+- Add support for a separate mouseover indicator
+
 ## 1.23
 - Add support for separate self target indicator options (for the class resource bars, which are implemented as a nameplate)
 - Add per-target type option to show/hide target indicator
