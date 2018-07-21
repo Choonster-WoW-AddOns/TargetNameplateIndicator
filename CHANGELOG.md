@@ -1,3 +1,6 @@
+## 1.26
+- Fix LibNameplateRegistry not being packaged correctly by the BigWigs packager script
+
 ## 1.25
 - Bump TOC Interface version to 8.0
 - Add .travis.yml file and TOC properties for the BigWigs packager script
