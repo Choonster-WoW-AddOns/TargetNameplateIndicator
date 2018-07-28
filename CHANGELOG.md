@@ -1,3 +1,6 @@
+## 1.27
+- Add support for a separate focus indicator
+
 ## 1.26
 - Fix LibNameplateRegistry not being packaged correctly by the BigWigs packager script
 

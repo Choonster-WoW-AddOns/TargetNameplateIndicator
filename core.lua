@@ -4,7 +4,7 @@
 ------------------------------------------------------
 
 -- List globals here for Mikk's FindGlobals script
--- GLOBALS: UnitIsUnit, UnitGUID, UnitIsFriend, CreateFrame, Mixin, print
+-- GLOBALS: UnitIsUnit, UnitGUID, UnitIsFriend, UnitExists, CreateFrame, Mixin, print
 
 local addon, ns = ...
 local CONFIG = ns.CONFIG
@@ -165,4 +165,37 @@ if CONFIG.MOUSEOVER_ENABLED then
 	end
 
 	MouseoverIndicator:SetScript("OnUpdate", MouseoverIndicator.OnUpdate)
+end
+
+------
+-- Focuus Indicator
+------
+
+if CONFIG.FOCUS_ENABLED then
+	local FocusIndicator = CreateIndicator("focus")
+	
+	function FocusIndicator:OnUpdate()
+		-- If there's a current nameplate and it's still the focus unit, do nothing
+		if self.currentNameplate and UnitIsUnit("focus", self.currentNameplate.namePlateUnitToken) then return end
+
+		-- If there isn't a current nameplate and there's no focus unit, do nothing
+		if not self.currentNameplate and not UnitExists("focus") then return end
+
+		local nameplate, plateData = self:GetPlateByGUID(UnitGUID("focus"))
+
+		local isFocusTarget = UnitIsUnit("focus", "target")
+
+		--@debug@
+		debugprint("Player focus changed", nameplate, "isFocusTargetTarget?", isFocusTarget)
+		--@end-debug@
+
+		-- If the player has their focus set to a unit other than their target or the target indicator is disabled, update the focus indicator; otherwise hide it
+		if not isFocusTarget or not CONFIG.TARGET_ENABLED then
+			self:Update(nameplate)
+		else
+			self:Update(nil)
+		end
+	end
+	
+	FocusIndicator:SetScript("OnUpdate", FocusIndicator.OnUpdate)
 end

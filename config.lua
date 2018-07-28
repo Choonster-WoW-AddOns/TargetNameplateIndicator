@@ -17,11 +17,13 @@ ns.CONFIG = CONFIG
 -- Config variables that start with CONFIG.SELF are used when targeting/mousing over yourself, config variables that start CONFIG.FRIENDLY are used for friendly targets/mouseovers and config variables that start with CONFIG.HOSTILE are used for hostile targets/mouseovers.
 
 -------
--- These variables control whether the texture is visible for your target and your mouseover.
+-- These variables control whether the texture is visible for your target, your mouseover and your focus.
 -------
 CONFIG.TARGET_ENABLED = true
 
 CONFIG.MOUSEOVER_ENABLED = true
+
+CONFIG.FOCUS_ENABLED = true
 
 -------
 -- These variables control whether the indicator is visible for yourself and for friendly and hostile units.
