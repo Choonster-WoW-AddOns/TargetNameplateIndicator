@@ -99,6 +99,14 @@ TARGET_CONFIG.FRIENDLY.TEXTURE_WIDTH  = 50
 TARGET_CONFIG.HOSTILE.TEXTURE_HEIGHT  = 50
 TARGET_CONFIG.HOSTILE.TEXTURE_WIDTH   = 50
 
+
+-- The opacity of the texture. 1 is fully opaque, 0 is transparent.
+TARGET_CONFIG.SELF.OPACITY = 1
+
+TARGET_CONFIG.FRIENDLY.OPACITY = 1
+
+TARGET_CONFIG.HOSTILE.OPACITY = 1
+
 -------
 -- These variables control how the texture is anchored to the nameplate.
 -------

@@ -69,6 +69,7 @@ function Indicator:Update(nameplate)
 		self.Texture:Show()
 		self.Texture:SetTexture(config.TEXTURE_PATH)
 		self.Texture:SetSize(config.TEXTURE_WIDTH, config.TEXTURE_HEIGHT)
+		self.Texture:SetAlpha(config.OPACITY)
 		self.Texture:SetPoint(config.TEXTURE_POINT, nameplate, config.ANCHOR_POINT, config.OFFSET_X, config.OFFSET_Y)
 	else
 		self.Texture:Hide()

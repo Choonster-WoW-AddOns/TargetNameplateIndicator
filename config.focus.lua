@@ -99,6 +99,14 @@ FOCUS_CONFIG.FRIENDLY.TEXTURE_WIDTH  = 50
 FOCUS_CONFIG.HOSTILE.TEXTURE_HEIGHT  = 50
 FOCUS_CONFIG.HOSTILE.TEXTURE_WIDTH   = 50
 
+
+-- The opacity of the texture. 1 is fully opaque, 0 is transparent.
+FOCUS_CONFIG.SELF.OPACITY = 1
+
+FOCUS_CONFIG.FRIENDLY.OPACITY = 1
+
+FOCUS_CONFIG.HOSTILE.OPACITY = 1
+
 -------
 -- These variables control how the texture is anchored to the nameplate.
 -------

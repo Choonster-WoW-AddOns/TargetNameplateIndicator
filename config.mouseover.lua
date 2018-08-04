@@ -99,6 +99,14 @@ MOUSEOVER_CONFIG.FRIENDLY.TEXTURE_WIDTH  = 50
 MOUSEOVER_CONFIG.HOSTILE.TEXTURE_HEIGHT  = 50
 MOUSEOVER_CONFIG.HOSTILE.TEXTURE_WIDTH   = 50
 
+
+-- The opacity of the texture. 1 is fully opaque, 0 is transparent.
+MOUSEOVER_CONFIG.SELF.OPACITY = 1
+
+MOUSEOVER_CONFIG.FRIENDLY.OPACITY = 1
+
+MOUSEOVER_CONFIG.HOSTILE.OPACITY = 1
+
 -------
 -- These variables control how the texture is anchored to the nameplate.
 -------
