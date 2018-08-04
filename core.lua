@@ -87,6 +87,7 @@ end
 
 local function CreateIndicator(unit)
 	local indicator = CreateFrame("Frame", "TargetNameplateIndicator_" .. unit)
+	indicator:SetFrameStrata("BACKGROUND")
 	indicator.Texture = indicator:CreateTexture("$parentTexture", "OVERLAY")
 
 	indicator.unit = unit
