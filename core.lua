@@ -4,11 +4,9 @@
 ------------------------------------------------------
 
 -- List globals here for Mikk's FindGlobals script
--- GLOBALS: UnitIsUnit, UnitGUID, UnitIsFriend, UnitExists, CreateFrame, Mixin, print
+-- GLOBALS: UnitIsUnit, UnitGUID, UnitIsFriend, UnitExists, CreateFrame, Mixin, print, pairs
 
 local addon, ns = ...
-local CONFIG = ns.CONFIG
-local SELF, FRIENDLY, HOSTILE = CONFIG.SELF, CONFIG.FRIENDLY, CONFIG.HOSTILE
 
 local TNI = CreateFrame("Frame", "TargetNameplateIndicator")
 local LNR = LibStub("LibNameplateRegistry-1.0")
@@ -65,7 +63,7 @@ function Indicator:Update(nameplate)
 	self.currentNameplate = nameplate
 	self.Texture:ClearAllPoints()
 
-	local config = UnitIsUnit("player", self.unit) and SELF or UnitIsFriend("player", self.unit) and FRIENDLY or HOSTILE
+	local config = UnitIsUnit("player", self.unit) and self.config.SELF or UnitIsFriend("player", self.unit) and self.config.FRIENDLY or self.config.HOSTILE
 
 	if nameplate and config.ENABLED then
 		self.Texture:Show()
@@ -98,12 +96,13 @@ function Indicator:AreOtherIndicatorsDisplayed()
 	return false
 end
 
-local function CreateIndicator(unit)
+local function CreateIndicator(unit, config)
 	local indicator = CreateFrame("Frame", "TargetNameplateIndicator_" .. unit)
 	indicator:SetFrameStrata("BACKGROUND")
 	indicator.Texture = indicator:CreateTexture("$parentTexture", "OVERLAY")
 
 	indicator.unit = unit
+	indicator.config = config
 
 	LNR:Embed(indicator)
 	Mixin(indicator, Indicator)
@@ -123,8 +122,8 @@ end
 -- Target Indicator
 ------
 
-if CONFIG.TARGET_ENABLED then
-	local TargetIndicator = CreateIndicator("target")
+if ns.TARGET_CONFIG.ENABLED then
+	local TargetIndicator = CreateIndicator("target", ns.TARGET_CONFIG)
 
 	function TargetIndicator:PLAYER_TARGET_CHANGED()
 		local nameplate, plateData = self:GetPlateByGUID(UnitGUID("target"))
@@ -154,8 +153,8 @@ end
 -- Mouseover Indicator
 ------
 
-if CONFIG.MOUSEOVER_ENABLED then
-	local MouseoverIndicator = CreateIndicator("mouseover")
+if ns.MOUSEOVER_CONFIG.ENABLED then
+	local MouseoverIndicator = CreateIndicator("mouseover", ns.MOUSEOVER_CONFIG)
 
 	function MouseoverIndicator:OnUpdate()
 		-- If there's a current nameplate and it's still the mouseover unit, do nothing
@@ -187,8 +186,8 @@ end
 -- Focuus Indicator
 ------
 
-if CONFIG.FOCUS_ENABLED then
-	local FocusIndicator = CreateIndicator("focus")
+if ns.FOCUS_CONFIG.ENABLED then
+	local FocusIndicator = CreateIndicator("focus", ns.FOCUS_CONFIG)
 	
 	function FocusIndicator:OnUpdate()
 		-- If there's a current nameplate and it's still the focus unit, do nothing

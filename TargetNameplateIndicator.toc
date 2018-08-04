@@ -14,5 +14,8 @@ LibNameplateRegistry-1.0\embeds.xml
 LibNameplateRegistry-1.0\LibNameplateRegistry-1.0\LibNameplateRegistry-1.0.xml
 #@end-no-lib-strip@
 
-config.lua
+config.target.lua
+config.mouseover.lua
+config.focus.lua
+
 core.lua
