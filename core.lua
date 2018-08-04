@@ -57,6 +57,8 @@ TNI:LNR_RegisterCallback("LNR_ERROR_FATAL_INCOMPATIBILITY", "OnError_FatalIncomp
 ------
 -- Nameplate callbacks
 ------
+local Indicators = {}
+
 local Indicator = {}
 
 function Indicator:Update(nameplate)
@@ -85,6 +87,17 @@ function Indicator:OnRecyclePlate(callback, nameplate, plateData)
 	end
 end
 
+-- Are other indicators already displaying on this indicator's unit?
+function Indicator:AreOtherIndicatorsDisplayed()
+	for unit, indicator in pairs(Indicators) do
+		if self.unit ~= indicator.unit and UnitIsUnit(self.unit, unit) then -- If the indicator is for a different unit token but it's the same unit, return true
+			return true
+		end
+	end
+	
+	return false
+end
+
 local function CreateIndicator(unit)
 	local indicator = CreateFrame("Frame", "TargetNameplateIndicator_" .. unit)
 	indicator:SetFrameStrata("BACKGROUND")
@@ -100,6 +113,8 @@ local function CreateIndicator(unit)
 	indicator:SetScript("OnEvent", function(self, event, ...)
 		self[event](self, ...)
 	end)
+	
+	Indicators[unit] = indicator
 
 	return indicator
 end
@@ -151,14 +166,14 @@ if CONFIG.MOUSEOVER_ENABLED then
 
 		local nameplate, plateData = self:GetPlateByGUID(UnitGUID("mouseover"))
 
-		local isMouseoverTarget = UnitIsUnit("mouseover", "target")
+		local areOtherIndicatorsDisplayed = self:AreOtherIndicatorsDisplayed()
 
 		--@debug@
-		debugprint("Player mouseover changed", nameplate, "isMouseoverTarget?", isMouseoverTarget)
+		debugprint("Player mouseover changed", nameplate, "areOtherIndicatorsDisplayed?", areOtherIndicatorsDisplayed)
 		--@end-debug@
 
-		-- If the player has their mouse over a unit other than their target or the target indicator is disabled, update the mouseover indicator; otherwise hide it
-		if not isMouseoverTarget or not CONFIG.TARGET_ENABLED then
+		-- If the player has their mouse over a unit that doesn't already have an indicator displaying on it, update the mouseover indicator; otherwise hide it 
+		if not areOtherIndicatorsDisplayed then
 			self:Update(nameplate)
 		else
 			self:Update(nil)
@@ -184,14 +199,14 @@ if CONFIG.FOCUS_ENABLED then
 
 		local nameplate, plateData = self:GetPlateByGUID(UnitGUID("focus"))
 
-		local isFocusTarget = UnitIsUnit("focus", "target")
+		local areOtherIndicatorsDisplayed = self:AreOtherIndicatorsDisplayed()
 
 		--@debug@
-		debugprint("Player focus changed", nameplate, "isFocusTargetTarget?", isFocusTarget)
+		debugprint("Player focus changed", nameplate, "areOtherIndicatorsDisplayed?", areOtherIndicatorsDisplayed)
 		--@end-debug@
 
-		-- If the player has their focus set to a unit other than their target or the target indicator is disabled, update the focus indicator; otherwise hide it
-		if not isFocusTarget or not CONFIG.TARGET_ENABLED then
+		-- If the player has their focus set to a unit that doesn't already have an indicator displaying on it, update the focus indicator; otherwise hide it
+		if not areOtherIndicatorsDisplayed then
 			self:Update(nameplate)
 		else
 			self:Update(nil)
