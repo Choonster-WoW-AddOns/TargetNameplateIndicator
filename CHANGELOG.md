@@ -1,3 +1,9 @@
+## 1.28
+- Change indicators to display below most UI elements
+- Prevent multiple indicators from displaying on the same unit
+- Add separate config files for each unit
+- Add config options to control the opacity of indicators
+
 ## 1.27
 - Add support for a separate focus indicator
 
