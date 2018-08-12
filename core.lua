@@ -6,12 +6,12 @@
 -- List globals here for Mikk's FindGlobals script
 -- GLOBALS: UnitIsUnit, UnitGUID, UnitIsFriend, UnitExists, CreateFrame, Mixin, print, pairs
 
-local addon, ns = ...
+local addon, TNI = ...
 
-local TNI = CreateFrame("Frame", "TargetNameplateIndicator")
 local LNR = LibStub("LibNameplateRegistry-1.0")
 
-LNR:Embed(TNI)
+LibStub("AceAddon-3.0"):NewAddon(TNI, addon)
+
 
 --@debug@
 local DEBUG = true
@@ -20,10 +20,6 @@ local function debugprint(...)
 	if DEBUG then
 		print("TNI DEBUG:", ...)
 	end
-end
-
-if DEBUG then
-	TNI:LNR_RegisterCallback("LNR_DEBUG", debugprint)
 end
 --@end-debug@
 
@@ -50,27 +46,91 @@ function TNI:OnError_FatalIncompatibility(callback, incompatibilityType)
 	errorPrint(true, "(Error Code: %s) %s", incompatibilityType, detailedMessage)
 end
 
-TNI:LNR_RegisterCallback("LNR_ERROR_FATAL_INCOMPATIBILITY", "OnError_FatalIncompatibility")
+------
+-- Initialisation
+------
+
+local defaults
+
+do
+	local function CreateUnitReactionTypeDefaults()
+		return {
+			enable = true,
+			texture = "Interface\\AddOns\\TargetNameplateIndicator\\Textures\\Reticule",
+			height = 50,
+			width = 50,
+			opacity = 1,
+			texturePoint = "BOTTOM",
+			anchorPoint = "TOP",
+			xOffset = 0,
+			yOffset = 5,
+		}
+	end
+	
+	local function CreateUnitDefaults()
+		return {
+			enable = true,
+			self = CreateUnitReactionTypeDefaults(),
+			friendly = CreateUnitReactionTypeDefaults(),
+			hostile = CreateUnitReactionTypeDefaults(),
+		}
+	end
+	
+	defaults = {
+		profile = {
+			target = CreateUnitDefaults(),
+			mouseover = CreateUnitDefaults(),
+			focus = CreateUnitDefaults(),
+		}
+	}
+end
+
+function TNI:OnInitialize()
+	LNR:Embed(self)
+	self.db = LibStub("AceDB-3.0"):New(addon .. "DB", defaults, true)
+	self:RegisterOptions() -- Defined in options.lua
+	
+	self:LNR_RegisterCallback("LNR_ERROR_FATAL_INCOMPATIBILITY", "OnError_FatalIncompatibility")
+	
+	--@debug@
+	if DEBUG then
+		TNI:LNR_RegisterCallback("LNR_DEBUG", debugprint)
+	end
+	--@end-debug@
+end
+
+function TNI:OnEnable()
+	for unit, indicator in pairs(self.Indicators) do
+		indicator:Show()
+	end
+end
+
+function TNI:OnDisable()
+	for unit, indicator in pairs(self.Indicators) do
+	
+	end
+end
 
 ------
--- Nameplate callbacks
+-- Indicator functions
 ------
-local Indicators = {}
+TNI.Indicators = {}
 
 local Indicator = {}
 
 function Indicator:Update(nameplate)
 	self.currentNameplate = nameplate
 	self.Texture:ClearAllPoints()
+	
+	local unitConfig = TNI.db.profile[self.unit]
+	local config = UnitIsUnit("player", self.unit) and unitConfig.self or UnitIsFriend("player", self.unit) and unitConfig.friendly or unitConfig.hostile
 
-	local config = UnitIsUnit("player", self.unit) and self.config.SELF or UnitIsFriend("player", self.unit) and self.config.FRIENDLY or self.config.HOSTILE
-
-	if nameplate and config.ENABLED then
+	if nameplate and config.enable then
 		self.Texture:Show()
-		self.Texture:SetTexture(config.TEXTURE_PATH)
-		self.Texture:SetSize(config.TEXTURE_WIDTH, config.TEXTURE_HEIGHT)
-		self.Texture:SetAlpha(config.OPACITY)
-		self.Texture:SetPoint(config.TEXTURE_POINT, nameplate, config.ANCHOR_POINT, config.OFFSET_X, config.OFFSET_Y)
+		self.Texture:SetTexture(config.texture)
+		self.Texture:SetSize(config.width, config.height)
+		self.Texture:SetAlpha(config.opacity)
+		self.Texture:SetPoint(config.texturePoint, nameplate, config.anchorPoint, config.xOffset, config.yOffset)
 	else
 		self.Texture:Hide()
 	end
@@ -88,7 +148,7 @@ end
 
 -- Are other indicators already displaying on this indicator's unit?
 function Indicator:AreOtherIndicatorsDisplayed()
-	for unit, indicator in pairs(Indicators) do
+	for unit, indicator in pairs(TNI.Indicators) do
 		if self.unit ~= indicator.unit and UnitIsUnit(self.unit, unit) then -- If the indicator is for a different unit token but it's the same unit, return true
 			return true
 		end
@@ -97,13 +157,12 @@ function Indicator:AreOtherIndicatorsDisplayed()
 	return false
 end
 
-local function CreateIndicator(unit, config)
+local function CreateIndicator(unit)
 	local indicator = CreateFrame("Frame", "TargetNameplateIndicator_" .. unit)
 	indicator:SetFrameStrata("BACKGROUND")
 	indicator.Texture = indicator:CreateTexture("$parentTexture", "OVERLAY")
 
 	indicator.unit = unit
-	indicator.config = config
 
 	LNR:Embed(indicator)
 	Mixin(indicator, Indicator)
@@ -114,7 +173,7 @@ local function CreateIndicator(unit, config)
 		self[event](self, ...)
 	end)
 	
-	Indicators[unit] = indicator
+	TNI.Indicators[unit] = indicator
 
 	return indicator
 end
@@ -215,3 +274,4 @@ if ns.FOCUS_CONFIG.ENABLED then
 	
 	FocusIndicator:SetScript("OnUpdate", FocusIndicator.OnUpdate)
 end
+
