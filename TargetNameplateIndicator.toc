@@ -1,4 +1,4 @@
-﻿## Title: TargetNameplateIndicator
+## Title: TargetNameplateIndicator
 ## Interface: 80000
 ## Notes: Puts a texture on your target's nameplate to make them stand out. Configure by editing the options in config.lua.
 ## Author: Choonster
@@ -13,12 +13,12 @@
 Libs\LibStub\LibStub.lua
 Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
 
-Libs\AceAddon-3.0\AceAddon-3.0.xml
-Libs\AceConfig-3.0\AceConfig-3.0.xml
-Libs\AceDB-3.0\AceDB-3.0.xml
-Libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
 Libs\AceEvent-3.0\AceEvent-3.0.xml
 Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceDB-3.0\AceDB-3.0.xml
+Libs\AceConfig-3.0\AceConfig-3.0.xml
+Libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
+Libs\AceAddon-3.0\AceAddon-3.0.xml
 
 Libs\LibNameplateRegistry-1.0\LibNameplateRegistry-1.0\LibNameplateRegistry-1.0.xml
 #@end-no-lib-strip@
