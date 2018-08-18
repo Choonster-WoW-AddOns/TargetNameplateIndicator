@@ -211,7 +211,7 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType, order, desc)
 				get = getNumber,
 				set = setNumber,
 			},
-		}
+		},
 	}
 end
 

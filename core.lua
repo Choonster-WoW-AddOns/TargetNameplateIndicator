@@ -66,7 +66,7 @@ do
 			yOffset = 5,
 		}
 	end
-	
+
 	local function CreateUnitDefaults()
 		return {
 			enable = true,
@@ -75,7 +75,7 @@ do
 			hostile = CreateUnitReactionTypeDefaults(),
 		}
 	end
-	
+
 	defaults = {
 		profile = {
 			target = CreateUnitDefaults(),
@@ -89,9 +89,9 @@ function TNI:OnInitialize()
 	LNR:Embed(self)
 	self.db = LibStub("AceDB-3.0"):New("TargetNameplateIndicatorDB", defaults, true)
 	self:RegisterOptions() -- Defined in options.lua
-	
+
 	self:LNR_RegisterCallback("LNR_ERROR_FATAL_INCOMPATIBILITY", "OnError_FatalIncompatibility")
-	
+
 	--@debug@
 	if DEBUG then
 		TNI:LNR_RegisterCallback("LNR_DEBUG", debugprint)
@@ -113,11 +113,11 @@ end
 
 function TNI:RefreshIndicator(unit)
 	local indicator = self.Indicators[unit]
-	
+
 	if not indicator then
 		error("Invalid unit \"" + unit + "\"")
 	end
-	
+
 	indicator:Refresh()
 end
 
@@ -131,7 +131,7 @@ local Indicator = {}
 function Indicator:Update(nameplate)
 	self.currentNameplate = nameplate
 	self.Texture:ClearAllPoints()
-	
+
 	local unitConfig = TNI.db.profile[self.unit]
 	local config = UnitIsUnit("player", self.unit) and unitConfig.self or UnitIsFriend("player", self.unit) and unitConfig.friendly or unitConfig.hostile
 
@@ -169,7 +169,7 @@ function Indicator:AreOtherIndicatorsDisplayed()
 			return true
 		end
 	end
-	
+
 	return false
 end
 
@@ -188,7 +188,7 @@ local function CreateIndicator(unit)
 	indicator:SetScript("OnEvent", function(self, event, ...)
 		self[event](self, ...)
 	end)
-	
+
 	TNI.Indicators[unit] = indicator
 
 	return indicator
@@ -244,7 +244,7 @@ function MouseoverIndicator:OnUpdate()
 	debugprint("Player mouseover changed", nameplate, "areOtherIndicatorsDisplayed?", areOtherIndicatorsDisplayed)
 	--@end-debug@
 
-	-- If the player has their mouse over a unit that doesn't already have an indicator displaying on it, update the mouseover indicator; otherwise hide it 
+	-- If the player has their mouse over a unit that doesn't already have an indicator displaying on it, update the mouseover indicator; otherwise hide it
 	if not areOtherIndicatorsDisplayed then
 		self:Update(nameplate)
 	else
