@@ -107,7 +107,7 @@ local function setNumber(info, val)
 	set(info, val)
 end
 
-local function CreateUnitRectionTypeConfigTable(unitReactionType)
+local function CreateUnitRectionTypeConfigTable(unitReactionType, order, desc)
 	local index = 0
 
 	local function nextIndex()
@@ -117,6 +117,8 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType)
 
 	return {
 		name = unitReactionType,
+		desc = desc,
+		order = order,
 		type = "group",
 		args = {
 			enable = {
@@ -201,7 +203,7 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType)
 	}
 end
 
-local function CreateUnitConfigTable(unit)
+local function CreateUnitConfigTable(unit, selfDesc, friendlyDesc, hostileDesc)
 	return {
 		name = unit,
 		type = "group",
@@ -211,10 +213,10 @@ local function CreateUnitConfigTable(unit)
 				name = "Enable",
 				desc = "Enables/disables the indicator for this unit",
 				type = "toggle",
-			}
-			self = CreateUnitRectionTypeConfigTable("self"),
-			friendly = CreateUnitRectionTypeConfigTable("friendly"),
-			hostile = CreateUnitRectionTypeConfigTable("hostile"),
+			},
+			self = CreateUnitRectionTypeConfigTable("self", 1, selfDesc),
+			friendly = CreateUnitRectionTypeConfigTable("friendly", 2, friendlyDesc),
+			hostile = CreateUnitRectionTypeConfigTable("hostile", 3, hostileDesc),
 		},
 	}
 end
@@ -223,9 +225,31 @@ local options = {
 	name = "Target Nameplate Indicator",
 	type = "group",
 	args = {
-		target = CreateUnitConfigTable("target"),
-		mouseover = CreateUnitConfigTable("mouseover"),
-		focus = CreateUnitConfigTable("focus"),
+		indicators = {
+			name = "Unit Indicator Options",
+			order = 1,
+			type = "group",
+			args = {
+				target = CreateUnitConfigTable(
+					"target",
+					"These options are used when targeting yourself",
+					"These options are used for friendly targets",
+					"These options are used for hostile targets"
+				),
+				mouseover = CreateUnitConfigTable(
+					"mouseover",
+					"These options are used when mousing over yourself",
+					"These options are used for friendly mouseovers",
+					"These options are used for hostile mouseovers"
+				),
+				focus = CreateUnitConfigTable(
+					"focus",
+					"These options are used when focusing yourself",
+					"These options are used for friendly focuses",
+					"These options are used for hostile focuses"
+				),
+			},
+		},
 	},
 	get = get,
 	set = set,
