@@ -198,8 +198,7 @@ end
 -- Target Indicator
 ------
 
--- if ns.TARGET_CONFIG.ENABLED then
-	local TargetIndicator = CreateIndicator("target", ns.TARGET_CONFIG)
+	local TargetIndicator = CreateIndicator("target")
 
 	function TargetIndicator:PLAYER_TARGET_CHANGED()
 		local nameplate, plateData = self:GetPlateByGUID(UnitGUID("target"))
@@ -223,14 +222,12 @@ end
 
 	TargetIndicator:RegisterEvent("PLAYER_TARGET_CHANGED")
 	TargetIndicator:LNR_RegisterCallback("LNR_ON_TARGET_PLATE_ON_SCREEN", "OnTargetPlateOnScreen")
--- end
 
 ------
 -- Mouseover Indicator
 ------
 
--- if ns.MOUSEOVER_CONFIG.ENABLED then
-	local MouseoverIndicator = CreateIndicator("mouseover", ns.MOUSEOVER_CONFIG)
+	local MouseoverIndicator = CreateIndicator("mouseover")
 
 	function MouseoverIndicator:OnUpdate()
 		-- If there's a current nameplate and it's still the mouseover unit, do nothing
@@ -256,14 +253,13 @@ end
 	end
 
 	MouseoverIndicator:SetScript("OnUpdate", MouseoverIndicator.OnUpdate)
--- end
+
 
 ------
 -- Focus Indicator
 ------
 
--- if ns.FOCUS_CONFIG.ENABLED then
-	local FocusIndicator = CreateIndicator("focus", ns.FOCUS_CONFIG)
+	local FocusIndicator = CreateIndicator("focus")
 	
 	function FocusIndicator:OnUpdate()
 		-- If there's a current nameplate and it's still the focus unit, do nothing
@@ -289,4 +285,3 @@ end
 	end
 	
 	FocusIndicator:SetScript("OnUpdate", FocusIndicator.OnUpdate)
--- end
