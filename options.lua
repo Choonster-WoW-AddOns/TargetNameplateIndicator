@@ -48,7 +48,7 @@ do
 	TEXTURES = {}
 
 	for texture, description in pairs(oldTextures) do
-		TEXTURES["Interface\\AddOns\\TargetNameplateIndicator\\Textures" + texture] = description
+		TEXTURES["Interface\\AddOns\\TargetNameplateIndicator\\Textures\\" .. texture] = description
 	end
 end
 
