@@ -37,9 +37,5 @@ Locales\ruRU.lua
 Locales\zhCN.lua
 Locales\zhTW.lua
 
-#config.target.lua
-#config.mouseover.lua
-#config.focus.lua
-
 core.lua
 options.lua
