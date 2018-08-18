@@ -136,6 +136,18 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType, order, desc)
 				values = TEXTURES,
 				style = "dropdown",
 			},
+			textureDisplay = {
+				name = "",
+				width = "full",
+				order = nextIndex(),
+				type = "description",
+				image = function(info)
+					local unitConfig, _ = findProfileTableAndKey(info)
+					return unitConfig.texture
+				end,
+				imageWidth = 100,
+				imageHeight = 100,
+			},
 			width = {
 				name = "Texture Width",
 				desc = "The width of the texture",
