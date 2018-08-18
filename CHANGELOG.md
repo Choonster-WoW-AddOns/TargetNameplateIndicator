@@ -1,3 +1,7 @@
+## 1.29
+- Add config GUI
+- Remove old config files
+
 ## 1.28
 - Change indicators to display below most UI elements
 - Prevent multiple indicators from displaying on the same unit
