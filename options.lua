@@ -108,6 +108,13 @@ local function setNumber(info, val)
 end
 
 local function CreateUnitRectionTypeConfigTable(unitReactionType)
+	local index = 0
+
+	local function nextIndex()
+		index = index + 1
+		return index
+	end
+
 	return {
 		name = unitReactionType,
 		type = "group",
@@ -115,11 +122,13 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType)
 			enable = {
 				name = "Enable",
 				desc = "Enables/disables the indicator for this unit reaction type",
+				order = nextIndex(),
 				type = "toggle",
 			},
 			texture = {
 				name = "Texture",
 				desc = "The texture to use for the indicator",
+				order = nextIndex(),
 				width = "full",
 				type = "select",
 				values = TEXTURES,
@@ -128,6 +137,7 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType)
 			width = {
 				name = "Texture Width",
 				desc = "The width of the texture",
+				order = nextIndex(),
 				type = "input",
 				pattern = NUMBER_PATTERN,
 				get = getNumber,
@@ -136,6 +146,7 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType)
 			height = {
 				name = "Texture Height",
 				desc = "The height of the texture",
+				order = nextIndex(),
 				type = "input",
 				pattern = NUMBER_PATTERN,
 				get = getNumber,
@@ -144,6 +155,7 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType)
 			opacity = {
 				name = "Texture Opacity",
 				desc = "The opacity of the texture. 1 is fully opaque, 0 is transparent.",
+				order = nextIndex(),
 				type = "input",
 				pattern = NUMBER_PATTERN,
 				get = getNumber,
@@ -152,6 +164,7 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType)
 			texturePoint = {
 				name = "Texture Point",
 				desc = "The point of the texture that should be anchored to the nameplate",
+				order = nextIndex(),
 				width = "full",
 				type = "select",
 				values = REGION_POINTS,
@@ -160,6 +173,7 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType)
 			anchorPoint = {
 				name = "Anchor Point",
 				desc = "The point of the nameplate the texture should be anchored to",
+				order = nextIndex(),
 				type = "select",
 				width = "full",
 				values = REGION_POINTS,
@@ -168,6 +182,7 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType)
 			xOffset = {
 				name = "X Offset",
 				desc = "The x offset of the texture relative to the anchor point",
+				order = nextIndex(),
 				type = "input",
 				pattern = NUMBER_PATTERN,
 				get = getNumber,
@@ -176,6 +191,7 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType)
 			yOffset = {
 				name = "Y Offset",
 				desc = "The y offset of the texture relative to the anchor point",
+				order = nextIndex(),
 				type = "input",
 				pattern = NUMBER_PATTERN,
 				get = getNumber,
