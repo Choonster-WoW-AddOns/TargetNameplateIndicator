@@ -1,4 +1,4 @@
-## Title: TargetNameplateIndicator
+﻿## Title: TargetNameplateIndicator
 ## Interface: 80000
 ## Notes: Puts a texture on your target's nameplate to make them stand out. Configure by editing the options in config.lua.
 ## Author: Choonster
@@ -23,8 +23,9 @@ Libs\AceGUI-3.0\AceGUI-3.0.xml
 Libs\LibNameplateRegistry-1.0\LibNameplateRegistry-1.0.xml
 #@end-no-lib-strip@
 
-config.target.lua
-config.mouseover.lua
-config.focus.lua
+#config.target.lua
+#config.mouseover.lua
+#config.focus.lua
 
 core.lua
+options.lua
