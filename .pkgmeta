@@ -9,7 +9,7 @@ externals:
     Libs/AceDBOptions-3.0: https://repos.wowace.com/wow/ace3/trunk/AceDBOptions-3.0
     Libs/AceEvent-3.0: https://repos.wowace.com/wow/ace3/trunk/AceEvent-3.0
     Libs/AceGUI-3.0: https://repos.wowace.com/wow/ace3/trunk/AceGUI-3.0
-    Libs/LibNameplateRegistry-1.0: https://repos.wowace.com/wow/libnameplateregistry-1-0/master/LibNameplateRegistry-1.0
+    Libs/LibNameplateRegistry-1.0: https://repos.wowace.com/wow/libnameplateregistry-1-0/
 
 required-depencencies:
     - ace3
