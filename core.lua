@@ -259,7 +259,7 @@ end
 -- end
 
 ------
--- Focuus Indicator
+-- Focus Indicator
 ------
 
 -- if ns.FOCUS_CONFIG.ENABLED then
