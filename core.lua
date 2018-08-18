@@ -182,7 +182,7 @@ end
 -- Target Indicator
 ------
 
-if ns.TARGET_CONFIG.ENABLED then
+-- if ns.TARGET_CONFIG.ENABLED then
 	local TargetIndicator = CreateIndicator("target", ns.TARGET_CONFIG)
 
 	function TargetIndicator:PLAYER_TARGET_CHANGED()
@@ -207,13 +207,13 @@ if ns.TARGET_CONFIG.ENABLED then
 
 	TargetIndicator:RegisterEvent("PLAYER_TARGET_CHANGED")
 	TargetIndicator:LNR_RegisterCallback("LNR_ON_TARGET_PLATE_ON_SCREEN", "OnTargetPlateOnScreen")
-end
+-- end
 
 ------
 -- Mouseover Indicator
 ------
 
-if ns.MOUSEOVER_CONFIG.ENABLED then
+-- if ns.MOUSEOVER_CONFIG.ENABLED then
 	local MouseoverIndicator = CreateIndicator("mouseover", ns.MOUSEOVER_CONFIG)
 
 	function MouseoverIndicator:OnUpdate()
@@ -240,13 +240,13 @@ if ns.MOUSEOVER_CONFIG.ENABLED then
 	end
 
 	MouseoverIndicator:SetScript("OnUpdate", MouseoverIndicator.OnUpdate)
-end
+-- end
 
 ------
 -- Focuus Indicator
 ------
 
-if ns.FOCUS_CONFIG.ENABLED then
+-- if ns.FOCUS_CONFIG.ENABLED then
 	local FocusIndicator = CreateIndicator("focus", ns.FOCUS_CONFIG)
 	
 	function FocusIndicator:OnUpdate()
@@ -273,5 +273,4 @@ if ns.FOCUS_CONFIG.ENABLED then
 	end
 	
 	FocusIndicator:SetScript("OnUpdate", FocusIndicator.OnUpdate)
-end
-
+-- end
