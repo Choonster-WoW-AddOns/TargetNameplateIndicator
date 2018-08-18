@@ -89,6 +89,7 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType)
 			texture = {
 				name = "Texture",
 				desc = "The texture to use for the indicator",
+				width = "full",
 				type = "select",
 				values = TEXTURES,
 				style = "dropdown",
@@ -114,6 +115,7 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType)
 			texturePoint = {
 				name = "Texture Point",
 				desc = "The point of the texture that should be anchored to the nameplate",
+				width = "full",
 				type = "select",
 				values = REGION_POINTS,
 				style = "dropdown",
@@ -122,6 +124,7 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType)
 				name = "Anchor Point",
 				desc = "The point of the nameplate the texture should be anchored to",
 				type = "select",
+				width = "full",
 				values = REGION_POINTS,
 				style = "dropdown",
 			},
