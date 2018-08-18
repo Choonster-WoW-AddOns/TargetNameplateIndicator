@@ -14,7 +14,7 @@ LibStub("AceAddon-3.0"):NewAddon(TNI, addon, "AceConsole-3.0")
 
 
 --@debug@
-local DEBUG = true
+local DEBUG = false
 
 local function debugprint(...)
 	if DEBUG then
