@@ -68,12 +68,43 @@ local REGION_POINTS = {
 -- A pattern that matches a number with an optional decimal part
 local NUMBER_PATTERN = "^%d+%.?%d*$"
 
-local function get(info)
+-- The index of the unit token in the AceConfig info table
+local UNIT_INFO_INDEX = 2
 
+-- Finds the table and key in the DB profile from an AceConfig info table
+local function findProfileTableAndKey(info)
+	local tab = TNI.db.profile
+	local key = info[UNIT_INFO_INDEX] -- Skip the "indicators" group at index 1
+
+	for i = UNIT_INFO_INDEX + 1, #info do
+		tab = tab[key]
+		key = info[i]
+	end
+
+	return tab, key
+end
+
+local function get(info)
+	local tab, key = findProfileTableAndKey(info)
+	return tab[key]
 end
 
 local function set(info, val)
+	local tab, key = findProfileTableAndKey(info)
+	tab[key] = val
 
+	local unit = info[UNIT_INFO_INDEX]
+	TNI:RefreshIndicator(unit)
+end
+
+local function getNumber(info)
+	local val = get(info)
+	return tostring(val)
+end
+
+local function setNumber(info, val)
+	local val = tonumber(val)
+	set(info, val)
 end
 
 local function CreateUnitRectionTypeConfigTable(unitReactionType)
@@ -94,23 +125,29 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType)
 				values = TEXTURES,
 				style = "dropdown",
 			},
-			height = {
-				name = "Texture Height",
-				desc = "The height of the texture",
-				type = "input",
-				pattern = NUMBER_PATTERN,
-			}
 			width = {
 				name = "Texture Width",
 				desc = "The width of the texture",
 				type = "input",
 				pattern = NUMBER_PATTERN,
+				get = getNumber,
+				set = setNumber,
+			},
+			height = {
+				name = "Texture Height",
+				desc = "The height of the texture",
+				type = "input",
+				pattern = NUMBER_PATTERN,
+				get = getNumber,
+				set = setNumber,
 			},
 			opacity = {
 				name = "Texture Opacity",
 				desc = "The opacity of the texture. 1 is fully opaque, 0 is transparent.",
 				type = "input",
 				pattern = NUMBER_PATTERN,
+				get = getNumber,
+				set = setNumber,
 			},
 			texturePoint = {
 				name = "Texture Point",
@@ -133,12 +170,16 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType)
 				desc = "The x offset of the texture relative to the anchor point",
 				type = "input",
 				pattern = NUMBER_PATTERN,
+				get = getNumber,
+				set = setNumber,
 			},
 			yOffset = {
 				name = "Y Offset",
 				desc = "The y offset of the texture relative to the anchor point",
 				type = "input",
-				pattern = NUMBER_PATTERN,				
+				pattern = NUMBER_PATTERN,
+				get = getNumber,
+				set = setNumber,
 			},
 		}
 	}

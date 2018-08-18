@@ -111,6 +111,16 @@ function TNI:OnDisable()
 	end
 end
 
+function TNI:RefreshIndicator(unit)
+	local indicator = self.Indicators[unit]
+	
+	if not indicator then
+		error("Invalid unit \"" + unit + "\"")
+	end
+	
+	indicator:Refresh()
+end
+
 ------
 -- Indicator functions
 ------
@@ -134,6 +144,10 @@ function Indicator:Update(nameplate)
 	else
 		self.Texture:Hide()
 	end
+end
+
+function Indicator:Refresh()
+	self:Update(self.currentNameplate)
 end
 
 function Indicator:OnRecyclePlate(callback, nameplate, plateData)
