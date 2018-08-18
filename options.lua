@@ -195,7 +195,7 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType, order, desc)
 			},
 			xOffset = {
 				name = "X Offset",
-				desc = "The x offset of the texture relative to the anchor point",
+				desc = "The x offset of the texture relative to the anchor point. Negative values move the texture left, positive values move the texture right.",
 				order = nextIndex(),
 				type = "input",
 				pattern = NUMBER_PATTERN,
@@ -204,7 +204,7 @@ local function CreateUnitRectionTypeConfigTable(unitReactionType, order, desc)
 			},
 			yOffset = {
 				name = "Y Offset",
-				desc = "The y offset of the texture relative to the anchor point",
+				desc = "The y offset of the texture relative to the anchor point. Negative values move the texture down, positive values move the texture up.",
 				order = nextIndex(),
 				type = "input",
 				pattern = NUMBER_PATTERN,
