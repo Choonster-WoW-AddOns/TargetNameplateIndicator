@@ -198,90 +198,90 @@ end
 -- Target Indicator
 ------
 
-	local TargetIndicator = CreateIndicator("target")
+local TargetIndicator = CreateIndicator("target")
 
-	function TargetIndicator:PLAYER_TARGET_CHANGED()
-		local nameplate, plateData = self:GetPlateByGUID(UnitGUID("target"))
+function TargetIndicator:PLAYER_TARGET_CHANGED()
+	local nameplate, plateData = self:GetPlateByGUID(UnitGUID("target"))
 
-		--@debug@
-		debugprint("Player target changed", nameplate)
-		--@end-debug@
+	--@debug@
+	debugprint("Player target changed", nameplate)
+	--@end-debug@
 
-		if not nameplate then
-			self:Update()
-		end
+	if not nameplate then
+		self:Update()
 	end
+end
 
-	function TargetIndicator:OnTargetPlateOnScreen(callback, nameplate, plateData)
-		--@debug@
-		debugprint("Callback fired (target found)")
-		--@end-debug@
+function TargetIndicator:OnTargetPlateOnScreen(callback, nameplate, plateData)
+	--@debug@
+	debugprint("Callback fired (target found)")
+	--@end-debug@
 
-		self:Update(nameplate)
-	end
+	self:Update(nameplate)
+end
 
-	TargetIndicator:RegisterEvent("PLAYER_TARGET_CHANGED")
-	TargetIndicator:LNR_RegisterCallback("LNR_ON_TARGET_PLATE_ON_SCREEN", "OnTargetPlateOnScreen")
+TargetIndicator:RegisterEvent("PLAYER_TARGET_CHANGED")
+TargetIndicator:LNR_RegisterCallback("LNR_ON_TARGET_PLATE_ON_SCREEN", "OnTargetPlateOnScreen")
 
 ------
 -- Mouseover Indicator
 ------
 
-	local MouseoverIndicator = CreateIndicator("mouseover")
+local MouseoverIndicator = CreateIndicator("mouseover")
 
-	function MouseoverIndicator:OnUpdate()
-		-- If there's a current nameplate and it's still the mouseover unit, do nothing
-		if self.currentNameplate and UnitIsUnit("mouseover", self.currentNameplate.namePlateUnitToken) then return end
+function MouseoverIndicator:OnUpdate()
+	-- If there's a current nameplate and it's still the mouseover unit, do nothing
+	if self.currentNameplate and UnitIsUnit("mouseover", self.currentNameplate.namePlateUnitToken) then return end
 
-		-- If there isn't a current nameplate and there's no mouseover unit, do nothing
-		if not self.currentNameplate and not UnitExists("mouseover") then return end
+	-- If there isn't a current nameplate and there's no mouseover unit, do nothing
+	if not self.currentNameplate and not UnitExists("mouseover") then return end
 
-		local nameplate, plateData = self:GetPlateByGUID(UnitGUID("mouseover"))
+	local nameplate, plateData = self:GetPlateByGUID(UnitGUID("mouseover"))
 
-		local areOtherIndicatorsDisplayed = self:AreOtherIndicatorsDisplayed()
+	local areOtherIndicatorsDisplayed = self:AreOtherIndicatorsDisplayed()
 
-		--@debug@
-		debugprint("Player mouseover changed", nameplate, "areOtherIndicatorsDisplayed?", areOtherIndicatorsDisplayed)
-		--@end-debug@
+	--@debug@
+	debugprint("Player mouseover changed", nameplate, "areOtherIndicatorsDisplayed?", areOtherIndicatorsDisplayed)
+	--@end-debug@
 
-		-- If the player has their mouse over a unit that doesn't already have an indicator displaying on it, update the mouseover indicator; otherwise hide it 
-		if not areOtherIndicatorsDisplayed then
-			self:Update(nameplate)
-		else
-			self:Update(nil)
-		end
+	-- If the player has their mouse over a unit that doesn't already have an indicator displaying on it, update the mouseover indicator; otherwise hide it 
+	if not areOtherIndicatorsDisplayed then
+		self:Update(nameplate)
+	else
+		self:Update(nil)
 	end
+end
 
-	MouseoverIndicator:SetScript("OnUpdate", MouseoverIndicator.OnUpdate)
+MouseoverIndicator:SetScript("OnUpdate", MouseoverIndicator.OnUpdate)
 
 
 ------
 -- Focus Indicator
 ------
 
-	local FocusIndicator = CreateIndicator("focus")
-	
-	function FocusIndicator:OnUpdate()
-		-- If there's a current nameplate and it's still the focus unit, do nothing
-		if self.currentNameplate and UnitIsUnit("focus", self.currentNameplate.namePlateUnitToken) then return end
+local FocusIndicator = CreateIndicator("focus")
 
-		-- If there isn't a current nameplate and there's no focus unit, do nothing
-		if not self.currentNameplate and not UnitExists("focus") then return end
+function FocusIndicator:OnUpdate()
+	-- If there's a current nameplate and it's still the focus unit, do nothing
+	if self.currentNameplate and UnitIsUnit("focus", self.currentNameplate.namePlateUnitToken) then return end
 
-		local nameplate, plateData = self:GetPlateByGUID(UnitGUID("focus"))
+	-- If there isn't a current nameplate and there's no focus unit, do nothing
+	if not self.currentNameplate and not UnitExists("focus") then return end
 
-		local areOtherIndicatorsDisplayed = self:AreOtherIndicatorsDisplayed()
+	local nameplate, plateData = self:GetPlateByGUID(UnitGUID("focus"))
 
-		--@debug@
-		debugprint("Player focus changed", nameplate, "areOtherIndicatorsDisplayed?", areOtherIndicatorsDisplayed)
-		--@end-debug@
+	local areOtherIndicatorsDisplayed = self:AreOtherIndicatorsDisplayed()
 
-		-- If the player has their focus set to a unit that doesn't already have an indicator displaying on it, update the focus indicator; otherwise hide it
-		if not areOtherIndicatorsDisplayed then
-			self:Update(nameplate)
-		else
-			self:Update(nil)
-		end
+	--@debug@
+	debugprint("Player focus changed", nameplate, "areOtherIndicatorsDisplayed?", areOtherIndicatorsDisplayed)
+	--@end-debug@
+
+	-- If the player has their focus set to a unit that doesn't already have an indicator displaying on it, update the focus indicator; otherwise hide it
+	if not areOtherIndicatorsDisplayed then
+		self:Update(nameplate)
+	else
+		self:Update(nil)
 	end
-	
-	FocusIndicator:SetScript("OnUpdate", FocusIndicator.OnUpdate)
+end
+
+FocusIndicator:SetScript("OnUpdate", FocusIndicator.OnUpdate)
