@@ -87,7 +87,7 @@ end
 
 function TNI:OnInitialize()
 	LNR:Embed(self)
-	self.db = LibStub("AceDB-3.0"):New(addon .. "DB", defaults, true)
+	self.db = LibStub("AceDB-3.0"):New("TargetNameplateIndicatorDB", defaults, true)
 	self:RegisterOptions() -- Defined in options.lua
 	
 	self:LNR_RegisterCallback("LNR_ERROR_FATAL_INCOMPATIBILITY", "OnError_FatalIncompatibility")
