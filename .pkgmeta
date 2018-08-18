@@ -10,6 +10,7 @@ externals:
     Libs/AceConfig-3.0: https://repos.wowace.com/wow/ace3/trunk/AceConfig-3.0
     Libs/AceDBOptions-3.0: https://repos.wowace.com/wow/ace3/trunk/AceDBOptions-3.0
     Libs/AceAddon-3.0: https://repos.wowace.com/wow/ace3/trunk/AceAddon-3.0
+    Libs/AceLocale-3.0: https://repos.wowace.com/wow/ace3/trunk/AceLocale-3.0
     Libs/LibNameplateRegistry-1.0: https://repos.wowace.com/wow/libnameplateregistry-1-0/
 
 required-depencencies:
