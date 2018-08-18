@@ -1,3 +1,6 @@
+## 1.30
+- Update TOC Notes tag to reflect the current functionality
+
 ## 1.29
 - Add config GUI
 - Remove old config files
