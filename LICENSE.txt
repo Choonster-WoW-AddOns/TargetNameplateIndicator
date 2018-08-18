@@ -1,4 +1,4 @@
-﻿Images packaged with this AddOn are the propery of their respective owners, as detailed at the top of core.lua.
+﻿Images packaged with this AddOn are the propery of their respective owners, as detailed in CONTRIBUTORS.md.
 
 The AddOn itself is licensed under the terms of the MIT License, detailed below.
 
