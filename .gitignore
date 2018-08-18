@@ -3,13 +3,12 @@
 !.gitattributes
 !TargetNameplateIndicator.toc
 !core.lua
-!config.target.lua    
-!config.mouseover.lua
-!config.focus.lua
+!options.lua
 !Screenshots/
 !Textures/
 !README.md
 !CHANGELOG.md
 !LICENSE.txt
+!CONTRIBUTORS.md
 !.pkgmeta
 !.travis.yml
