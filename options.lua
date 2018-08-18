@@ -1,3 +1,6 @@
+-- List globals here for Mikk's FindGlobals script
+-- GLOBALS: LibStub, InterfaceOptionsFrame_OpenToCategory, unpack, ipairs
+
 local addon, TNI = ...
 local ACR = LibStub("AceConfigRegistry-3.0")
 local ACD = LibStub("AceConfigDialog-3.0")
