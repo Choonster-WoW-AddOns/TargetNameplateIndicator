@@ -107,7 +107,7 @@ end
 
 function TNI:OnDisable()
 	for unit, indicator in pairs(self.Indicators) do
-	
+		indicator:Hide()
 	end
 end
 
