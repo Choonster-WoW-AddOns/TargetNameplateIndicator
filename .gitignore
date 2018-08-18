@@ -3,6 +3,7 @@
 !.gitattributes
 !TargetNameplateIndicator.toc
 !core.lua
+!options.lua
 !config.target.lua    
 !config.mouseover.lua
 !config.focus.lua
