@@ -10,7 +10,7 @@ local addon, TNI = ...
 
 local LNR = LibStub("LibNameplateRegistry-1.0")
 
-LibStub("AceAddon-3.0"):NewAddon(TNI, addon)
+LibStub("AceAddon-3.0"):NewAddon(TNI, addon, "AceConsole-3.0")
 
 
 --@debug@
