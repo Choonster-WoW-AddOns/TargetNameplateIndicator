@@ -135,6 +135,8 @@ function Indicator:Update(nameplate)
 	local unitConfig = TNI.db.profile[self.unit]
 	local config = UnitIsUnit("player", self.unit) and unitConfig.self or UnitIsFriend("player", self.unit) and unitConfig.friendly or unitConfig.hostile
 
+	self:SetShown(unitConfig.enable)
+
 	if nameplate and config.enable then
 		self.Texture:Show()
 		self.Texture:SetTexture(config.texture)
