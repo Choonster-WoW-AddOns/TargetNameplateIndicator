@@ -74,12 +74,6 @@ do
 	end
 end
 
--- A pattern that matches a number with an optional decimal part
-local POSITIVE_NUMBER_PATTERN = "^%d+%.?%d*$"
-
--- A pattern that matches a number with an optional minus sign and/or decimal part
-local ANY_NUMBER_PATTERN = "^%-?%d+%.?%d*$"
-
 -- The index of the unit token in the AceConfig info table
 local UNIT_INFO_INDEX = 2
 
@@ -125,6 +119,52 @@ end
 
 local function getDesc(info)
 	return L[("Option.UnitReactionType.%s.Desc"):format(info[#info])]
+end
+
+-- Validates that the value is a number
+local function validateAnyNumber(info, val)
+	local number = tonumber(val)
+	
+	-- Must be a number
+	if not number then
+		return false
+	end
+	
+	return true
+end
+
+-- Validates that the value is a positive number
+local function validatePositiveNumber(info, val)
+	local number = tonumber(val)
+	
+	-- Must be a number
+	if not number then
+		return false
+	end
+	
+	-- Must be positive
+	if number <= 0 then
+		return false
+	end
+	
+	return true
+end
+
+-- Validates that the value is a number between 0 and 1
+local function validateFractionalNumber(info, val)
+	local number = tonumber(val)
+	
+	-- Must be a number
+	if not number then
+		return false
+	end
+	
+	-- Must be between 0 and 1
+	if number < 0 or number > 1 then
+		return false
+	end
+	
+	return true
 end
 
 local function CreateUnitRectionTypeConfigTable(unit, unitReactionType, order)
@@ -173,7 +213,8 @@ local function CreateUnitRectionTypeConfigTable(unit, unitReactionType, order)
 				desc = getDesc,
 				order = nextIndex(),
 				type = "input",
-				pattern = POSITIVE_NUMBER_PATTERN,
+				validate = validatePositiveNumber,
+				usage = L["Usage.PositiveNumber"],
 				get = getNumber,
 				set = setNumber,
 			},
@@ -182,7 +223,8 @@ local function CreateUnitRectionTypeConfigTable(unit, unitReactionType, order)
 				desc = getDesc,
 				order = nextIndex(),
 				type = "input",
-				pattern = POSITIVE_NUMBER_PATTERN,
+				validate = validatePositiveNumber,
+				usage = L["Usage.PositiveNumber"],
 				get = getNumber,
 				set = setNumber,
 			},
@@ -191,7 +233,8 @@ local function CreateUnitRectionTypeConfigTable(unit, unitReactionType, order)
 				desc = getDesc,
 				order = nextIndex(),
 				type = "input",
-				pattern = POSITIVE_NUMBER_PATTERN,
+				validate = validateFractionalNumber,
+				usage = L["Usage.FractionalNumber"],
 				get = getNumber,
 				set = setNumber,
 			},
@@ -218,7 +261,8 @@ local function CreateUnitRectionTypeConfigTable(unit, unitReactionType, order)
 				desc = getDesc,
 				order = nextIndex(),
 				type = "input",
-				pattern = ANY_NUMBER_PATTERN,
+				validate = validateAnyNumber,
+				usage = L["Usage.AnyNumber"],
 				get = getNumber,
 				set = setNumber,
 			},
@@ -227,7 +271,8 @@ local function CreateUnitRectionTypeConfigTable(unit, unitReactionType, order)
 				desc = getDesc,
 				order = nextIndex(),
 				type = "input",
-				pattern = ANY_NUMBER_PATTERN,
+				validate = validateAnyNumber,
+				usage = L["Usage.AnyNumber"],
 				get = getNumber,
 				set = setNumber,
 			},

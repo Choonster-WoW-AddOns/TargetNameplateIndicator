@@ -49,6 +49,10 @@ L["Dropdown.RegionPoint.BOTTOMLEFT.Desc"]  = "Bottom Left - The bottom left corn
 L["Dropdown.RegionPoint.BOTTOMRIGHT.Desc"] = "Bottom Right - The bottom right corner of the rectangle"
 L["Dropdown.RegionPoint.CENTER.Desc"]      = "Centre - The centre-point of the rectangle"
 
+L["Usage.AnyNumber"] = "Must be a number"
+L["Usage.PositiveNumber"] = "Must be a positive number"
+L["Usage.FractionalNumber"] = "Must be a number between 0 and 1"
+
 L["Group.indicators.Name"] = "Unit Indicator Options"
 
 L["Group.target.Name"] = "Target"
