@@ -1,5 +1,5 @@
 -- List globals here for Mikk's FindGlobals script
--- GLOBALS: LibStub, InterfaceOptionsFrame_OpenToCategory, unpack, ipairs
+-- GLOBALS: LibStub, InterfaceOptionsFrame_OpenToCategory, unpack, ipairs, tostring, tonumber
 
 local addon, TNI = ...
 local ACR = LibStub("AceConfigRegistry-3.0")
