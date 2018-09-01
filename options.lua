@@ -75,7 +75,10 @@ do
 end
 
 -- A pattern that matches a number with an optional decimal part
-local NUMBER_PATTERN = "^%d+%.?%d*$"
+local POSITIVE_NUMBER_PATTERN = "^%d+%.?%d*$"
+
+-- A pattern that matches a number with an optional minus sign and/or decimal part
+local ANY_NUMBER_PATTERN = "^%-?%d+%.?%d*$"
 
 -- The index of the unit token in the AceConfig info table
 local UNIT_INFO_INDEX = 2
@@ -170,7 +173,7 @@ local function CreateUnitRectionTypeConfigTable(unit, unitReactionType, order)
 				desc = getDesc,
 				order = nextIndex(),
 				type = "input",
-				pattern = NUMBER_PATTERN,
+				pattern = POSITIVE_NUMBER_PATTERN,
 				get = getNumber,
 				set = setNumber,
 			},
@@ -179,7 +182,7 @@ local function CreateUnitRectionTypeConfigTable(unit, unitReactionType, order)
 				desc = getDesc,
 				order = nextIndex(),
 				type = "input",
-				pattern = NUMBER_PATTERN,
+				pattern = POSITIVE_NUMBER_PATTERN,
 				get = getNumber,
 				set = setNumber,
 			},
@@ -188,7 +191,7 @@ local function CreateUnitRectionTypeConfigTable(unit, unitReactionType, order)
 				desc = getDesc,
 				order = nextIndex(),
 				type = "input",
-				pattern = NUMBER_PATTERN,
+				pattern = POSITIVE_NUMBER_PATTERN,
 				get = getNumber,
 				set = setNumber,
 			},
@@ -215,7 +218,7 @@ local function CreateUnitRectionTypeConfigTable(unit, unitReactionType, order)
 				desc = getDesc,
 				order = nextIndex(),
 				type = "input",
-				pattern = NUMBER_PATTERN,
+				pattern = ANY_NUMBER_PATTERN,
 				get = getNumber,
 				set = setNumber,
 			},
@@ -224,7 +227,7 @@ local function CreateUnitRectionTypeConfigTable(unit, unitReactionType, order)
 				desc = getDesc,
 				order = nextIndex(),
 				type = "input",
-				pattern = NUMBER_PATTERN,
+				pattern = ANY_NUMBER_PATTERN,
 				get = getNumber,
 				set = setNumber,
 			},
