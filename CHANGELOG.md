@@ -1,3 +1,6 @@
+## 1.32
+- Add missing translations to CurseForge
+
 ## 1.31
 - Update license with reference to new CONTRIBUTORS file
 - Add verification for missing nameplate unit tokens
