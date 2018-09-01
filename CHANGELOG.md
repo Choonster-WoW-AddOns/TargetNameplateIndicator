@@ -1,3 +1,15 @@
+## 1.31
+- Update license with reference to new CONTRIBUTORS file
+- Add verification for missing nameplate unit tokens
+	- This will throw a clear error when a nameplate doesn't have a unit token (which TNI requires to function) instead of throwing a generic usage error for the UnitIsUnit function.
+	- This is usually caused by AddOns that replace the default nameplates, e.g. ElvUI or EKPlates.
+- Improve number validation in the config GUI.
+	- There are now usage messages for numeric options.
+	- Width and Height are now restricted to positive numbers.
+	- Opacity is now restricted to numbers between 0 and 1.
+	- X and Y offsets now accept negative numbers.
+	- This now uses Lua's built-in number parsing instead of relying on pattern matching.
+
 ## 1.30
 - Update TOC Notes tag to reflect the current functionality
 
