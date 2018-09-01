@@ -173,6 +173,23 @@ function Indicator:AreOtherIndicatorsDisplayed()
 	return false
 end
 
+-- Verfies that the current nameplate (if there is one) has a unit token and disables the indicator and throws an error if it doesn't.
+-- Returns true if there's no issue.
+function Indicator:VerifyNameplateUnitToken()
+	if self.currentNameplate and not self.currentNameplate.namePlateUnitToken then
+		TNI.db.profile[self.unit].enable = false
+		self:Hide()
+	
+		error((
+			"TargetNameplateIndicator: %s indicator found a nameplate without a unit token and as such is unable to function." .. 
+			" This is usually caused by AddOns that replace the default nameplates (e.g. ElvUI or EKPlates)." ..
+			" This indicator will now be disabled until it's re-enabled in the options menu."
+		):format(self.unit))
+	end
+	
+	return true
+end
+
 local function CreateIndicator(unit)
 	local indicator = CreateFrame("Frame", "TargetNameplateIndicator_" .. unit)
 	indicator:SetFrameStrata("BACKGROUND")
@@ -231,7 +248,7 @@ local MouseoverIndicator = CreateIndicator("mouseover")
 
 function MouseoverIndicator:OnUpdate()
 	-- If there's a current nameplate and it's still the mouseover unit, do nothing
-	if self.currentNameplate and UnitIsUnit("mouseover", self.currentNameplate.namePlateUnitToken) then return end
+	if self.currentNameplate and self:VerifyNameplateUnitToken() and UnitIsUnit("mouseover", self.currentNameplate.namePlateUnitToken) then return end
 
 	-- If there isn't a current nameplate and there's no mouseover unit, do nothing
 	if not self.currentNameplate and not UnitExists("mouseover") then return end
@@ -263,7 +280,7 @@ local FocusIndicator = CreateIndicator("focus")
 
 function FocusIndicator:OnUpdate()
 	-- If there's a current nameplate and it's still the focus unit, do nothing
-	if self.currentNameplate and UnitIsUnit("focus", self.currentNameplate.namePlateUnitToken) then return end
+	if self.currentNameplate and self:VerifyNameplateUnitToken() and UnitIsUnit("focus", self.currentNameplate.namePlateUnitToken) then return end
 
 	-- If there isn't a current nameplate and there's no focus unit, do nothing
 	if not self.currentNameplate and not UnitExists("focus") then return end
