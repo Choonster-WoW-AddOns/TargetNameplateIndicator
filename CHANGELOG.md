@@ -1,3 +1,8 @@
+## 1.34
+- Remove mention of ElvUI from unit token error message
+	- ElvUI fixed the issue on 2018-10-11:
+	- https://git.tukui.org/elvui/elvui/issues/602#note_9808
+
 ## 1.33
 - Bump TOC Interface version to 8.2
 - Update library URLs in .pkgmeta
