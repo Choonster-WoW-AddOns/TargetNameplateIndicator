@@ -182,7 +182,7 @@ function Indicator:VerifyNameplateUnitToken()
 	
 		error((
 			"TargetNameplateIndicator: %s indicator found a nameplate without a unit token and as such is unable to function." .. 
-			" This is usually caused by AddOns that replace the default nameplates (e.g. ElvUI or EKPlates)." ..
+			" This is usually caused by AddOns that replace the default nameplates (e.g. EKPlates)." ..
 			" This indicator will now be disabled until it's re-enabled in the options menu."
 		):format(self.unit))
 	end
