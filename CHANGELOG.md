@@ -1,3 +1,7 @@
+## 1.33
+- Bump TOC Interface version to 8.2
+- Update library URLs in .pkgmeta
+
 ## 1.32
 - Add missing translations to CurseForge
 
