@@ -1,3 +1,6 @@
+## 1.35
+- Bump TOC Interface version to 8.3
+
 ## 1.34
 - Remove mention of ElvUI from unit token error message
 	- ElvUI fixed the issue on 2018-10-11:
