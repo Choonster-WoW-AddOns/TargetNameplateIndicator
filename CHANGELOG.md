@@ -1,3 +1,6 @@
+## 1.37
+- Bump TOC Interface version to 9.0.5
+
 ## 1.36
 - Bump TOC Interface version to 9.0.1
 
