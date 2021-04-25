@@ -80,6 +80,7 @@ do
 			target = CreateUnitDefaults(),
 			mouseover = CreateUnitDefaults(),
 			focus = CreateUnitDefaults(),
+			targettarget = CreateUnitDefaults(),
 		}
 	}
 end
@@ -317,3 +318,10 @@ local MouseoverIndicator = CreateNonTargetIndicator("mouseover", 10)
 
 ---@diagnostic disable-next-line: unused-local
 local FocusIndicator = CreateNonTargetIndicator("focus", 90)
+
+------
+-- Target of Target Indicator
+------
+
+---@diagnostic disable-next-line: unused-local
+local TargetOfTargetIndicator = CreateNonTargetIndicator("targettarget", 50)

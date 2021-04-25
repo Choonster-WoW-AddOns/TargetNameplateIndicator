@@ -58,6 +58,7 @@ L["Group.indicators.Name"] = "Unit Indicator Options"
 L["Group.target.Name"] = "Target"
 L["Group.mouseover.Name"] = "Mouseover"
 L["Group.focus.Name"] = "Focus"
+L["Group.targettarget.Name"] = "Target of Target"
 
 L["Group.self.Name"] = "Self"
 L["Group.friendly.Name"] = "Friendly"
@@ -74,6 +75,10 @@ L["Group.mouseover.hostile.Desc"]  = "These options are used for hostile mouseov
 L["Group.focus.self.Desc"]     = "These options are used when focusing yourself"
 L["Group.focus.friendly.Desc"] = "These options are used for friendly focuses"
 L["Group.focus.hostile.Desc"]  = "These options are used for hostile focuses"
+
+L["Group.targettarget.self.Desc"]     = "These options are used when your target is targeting you"
+L["Group.targettarget.friendly.Desc"] = "These options are used when your target's target is friendly to you"
+L["Group.targettarget.hostile.Desc"]  = "These options are used when your target's target is hostile to you"
 
 L["Option.Unit.enable.Name"] = "Enable"
 L["Option.Unit.enable.Desc"] = "Enables/disables the indicator for this unit"

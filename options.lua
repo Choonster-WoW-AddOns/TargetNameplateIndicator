@@ -309,6 +309,7 @@ local options = {
 				target = CreateUnitConfigTable("target"),
 				mouseover = CreateUnitConfigTable("mouseover"),
 				focus = CreateUnitConfigTable("focus"),
+				targettarget = CreateUnitConfigTable("targettarget"),
 			},
 		},
 	},
