@@ -3,9 +3,6 @@
 --        Do not change anything in this file       --
 ------------------------------------------------------
 
--- List globals here for Mikk's FindGlobals script
--- GLOBALS: LibStub, UnitIsUnit, UnitGUID, UnitIsFriend, UnitExists, CreateFrame, Mixin, print, pairs, error
-
 local addon, TNI = ...
 
 local LNR = LibStub("LibNameplateRegistry-1.0")
