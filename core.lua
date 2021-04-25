@@ -20,6 +20,7 @@ local function debugprint(...)
 end
 --@end-debug@
 
+
 -----
 -- Error callbacks
 -----
@@ -42,6 +43,7 @@ function TNI:OnError_FatalIncompatibility(callback, incompatibilityType)
 
 	errorPrint(true, "(Error Code: %s) %s", incompatibilityType, detailedMessage)
 end
+
 
 ------
 -- Initialisation
@@ -118,6 +120,7 @@ function TNI:RefreshIndicator(unit)
 	indicator:Refresh()
 end
 
+
 ------
 -- Indicator functions
 ------
@@ -176,14 +179,14 @@ function Indicator:VerifyNameplateUnitToken()
 	if self.currentNameplate and not self.currentNameplate.namePlateUnitToken then
 		TNI.db.profile[self.unit].enable = false
 		self:Hide()
-	
+
 		error((
-			"TargetNameplateIndicator: %s indicator found a nameplate without a unit token and as such is unable to function." .. 
+			"TargetNameplateIndicator: %s indicator found a nameplate without a unit token and as such is unable to function." ..
 			" This is usually caused by AddOns that replace the default nameplates (e.g. EKPlates)." ..
 			" This indicator will now be disabled until it's re-enabled in the options menu."
 		):format(self.unit))
 	end
-	
+
 	return true
 end
 

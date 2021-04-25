@@ -123,46 +123,46 @@ end
 -- Validates that the value is a number
 local function validateAnyNumber(info, val)
 	local number = tonumber(val)
-	
+
 	-- Must be a number
 	if not number then
 		return false
 	end
-	
+
 	return true
 end
 
 -- Validates that the value is a positive number
 local function validatePositiveNumber(info, val)
 	local number = tonumber(val)
-	
+
 	-- Must be a number
 	if not number then
 		return false
 	end
-	
+
 	-- Must be positive
 	if number <= 0 then
 		return false
 	end
-	
+
 	return true
 end
 
 -- Validates that the value is a number between 0 and 1
 local function validateFractionalNumber(info, val)
 	local number = tonumber(val)
-	
+
 	-- Must be a number
 	if not number then
 		return false
 	end
-	
+
 	-- Must be between 0 and 1
 	if number < 0 or number > 1 then
 		return false
 	end
-	
+
 	return true
 end
 
