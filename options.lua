@@ -108,7 +108,7 @@ local function getNumber(info)
 end
 
 local function setNumber(info, val)
-	local val = tonumber(val)
+	val = tonumber(val)
 	set(info, val)
 end
 
