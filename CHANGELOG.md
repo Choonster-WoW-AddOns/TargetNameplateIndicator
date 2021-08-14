@@ -1,3 +1,6 @@
+## 1.39
+- Bump TOC Interface version to 9.1
+
 ## 1.38
 - Add Target of Target indicator
 - Refactor checking of other indicators to priority-based system
