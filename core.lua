@@ -137,6 +137,7 @@ function Indicator:Update(nameplate)
 	local config = UnitIsUnit("player", self.unit) and unitConfig.self or UnitIsFriend("player", self.unit) and unitConfig.friendly or unitConfig.hostile
 
 	self:SetShown(unitConfig.enable)
+	self.enabled = unitConfig.enable;
 
 	if nameplate and config.enable then
 		self.Texture:Show()
@@ -170,7 +171,7 @@ end
 -- - If an equal or higher priority indicator is displaying, this returns false.
 function Indicator:CheckAndHideLowerPriorityIndicators()
 	for unit, indicator in pairs(TNI.Indicators) do
-		if self.unit ~= indicator.unit and UnitIsUnit(self.unit, unit) then -- If the indicator is for a different unit token but it's the same unit,
+		if indicator.enabled and self.unit ~= indicator.unit and UnitIsUnit(self.unit, unit) then -- If the indicator is for a different unit token but it's the same unit,
 			if self.priority > indicator.priority then -- If this indicator is a higher priority, hide the other indicator and return true
 				indicator:Update()
 				return true
