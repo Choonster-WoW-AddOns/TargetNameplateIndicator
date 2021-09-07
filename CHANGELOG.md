@@ -1,3 +1,6 @@
+## 1.40
+- Prevent indicators from being hidden by disabled higher-priority indicators
+
 ## 1.39
 - Bump TOC Interface version to 9.1
 
