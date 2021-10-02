@@ -140,8 +140,12 @@ function Indicator:Update(nameplate)
 	self.enabled = unitConfig.enable;
 
 	if nameplate and config.enable then
+		local texture = config.texture
+		if texture == "custom" then
+			texture = config.textureCustom
+		end
 		self.Texture:Show()
-		self.Texture:SetTexture(config.texture)
+		self.Texture:SetTexture(texture)
 		self.Texture:SetSize(config.width, config.height)
 		self.Texture:SetAlpha(config.opacity)
 		self.Texture:SetPoint(config.texturePoint, nameplate, config.anchorPoint, config.xOffset, config.yOffset)
