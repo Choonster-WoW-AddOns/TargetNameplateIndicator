@@ -1,3 +1,6 @@
+## 1.41
+- Add support for custom textures (contributed by @markgravity)
+
 ## 1.40
 - Prevent indicators from being hidden by disabled higher-priority indicators
 
