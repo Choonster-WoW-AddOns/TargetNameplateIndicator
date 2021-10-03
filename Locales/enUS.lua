@@ -89,6 +89,9 @@ L["Option.UnitReactionType.enable.Desc"] = "Enables/disables the indicator for t
 L["Option.UnitReactionType.texture.Name"] = "Texture"
 L["Option.UnitReactionType.texture.Desc"] = "The texture to use for the indicator"
 
+L["Option.UnitReactionType.textureCustom.Desc"] = "The custom texture path to use for the indicator"
+L["Option.UnitReactionType.textureCustom.Name"] = "Custom Texture"
+
 L["Option.UnitReactionType.width.Name"] = "Texture Width"
 L["Option.UnitReactionType.width.Desc"] = "The width of the texture"
 

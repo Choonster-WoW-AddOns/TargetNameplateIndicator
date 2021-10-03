@@ -44,7 +44,9 @@ local TEXTURE_NAMES = {
 }
 
 -- Add the directory prefix to the texture names and localise the descriptions
-local TEXTURES = {}
+local TEXTURES = {
+	custom = "Custom"
+}
 do
 	for _, textureName in ipairs(TEXTURE_NAMES) do
 		local description = L[("Dropdown.Texture.%s.Desc"):format(textureName)]
@@ -195,6 +197,17 @@ local function CreateUnitRectionTypeConfigTable(unit, unitReactionType, order)
 				values = TEXTURES,
 				style = "dropdown",
 			},
+			textureCustom = {
+				name = getName,
+				desc = getDesc,
+				order = nextIndex(),
+				width = "full",
+				type = "input",
+				hidden = function(info)
+					local unitConfig, _ = findProfileTableAndKey(info)
+					return unitConfig.texture ~= "custom"
+				end,
+			},
 			textureDisplay = {
 				name = "",
 				width = "full",
@@ -202,6 +215,9 @@ local function CreateUnitRectionTypeConfigTable(unit, unitReactionType, order)
 				type = "description",
 				image = function(info)
 					local unitConfig, _ = findProfileTableAndKey(info)
+					if unitConfig.texture == "custom" then
+						return unitConfig.textureCustom
+					end
 					return unitConfig.texture
 				end,
 				imageWidth = 100,
