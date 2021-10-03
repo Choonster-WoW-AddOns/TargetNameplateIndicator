@@ -144,6 +144,7 @@ function Indicator:Update(nameplate)
 		if texture == "custom" then
 			texture = config.textureCustom
 		end
+
 		self.Texture:Show()
 		self.Texture:SetTexture(texture)
 		self.Texture:SetSize(config.width, config.height)

@@ -215,9 +215,11 @@ local function CreateUnitRectionTypeConfigTable(unit, unitReactionType, order)
 				type = "description",
 				image = function(info)
 					local unitConfig, _ = findProfileTableAndKey(info)
+
 					if unitConfig.texture == "custom" then
 						return unitConfig.textureCustom
 					end
+
 					return unitConfig.texture
 				end,
 				imageWidth = 100,
