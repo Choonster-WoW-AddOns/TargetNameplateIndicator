@@ -125,8 +125,17 @@ end
 ------
 -- Indicator functions
 ------
+
+--- @type table<string, Indicator>
 TNI.Indicators = {}
 
+--- @class Indicator : Frame
+--- @field Texture Texture
+--- @field enabled boolean
+--- @field unit string
+--- @field priority number
+--- @field LNR_RegisterCallback fun(string, string)
+--- @field GetPlateByGUID fun(string):Frame,table
 local Indicator = {}
 
 function Indicator:Update(nameplate)
@@ -208,6 +217,7 @@ function Indicator:VerifyNameplateUnitToken()
 end
 
 local function CreateIndicator(unit, priority)
+	--- @type Indicator
 	local indicator = CreateFrame("Frame", "TargetNameplateIndicator_" .. unit)
 	indicator:SetFrameStrata("BACKGROUND")
 	indicator.Texture = indicator:CreateTexture("$parentTexture", "OVERLAY")
@@ -234,6 +244,7 @@ end
 -- Non-target Indicator functions
 ------
 
+--- @class NonTargetIndicator:Indicator
 local NonTargetIndicator = {}
 
 function NonTargetIndicator:OnUpdate()
@@ -264,6 +275,7 @@ function NonTargetIndicator:OnUpdate()
 end
 
 local function CreateNonTargetIndicator(unit, priority)
+	--- @type NonTargetIndicator
 	local indicator = CreateIndicator(unit, priority)
 
 	Mixin(indicator, NonTargetIndicator)
