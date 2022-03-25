@@ -14,3 +14,4 @@
 !.pkgmeta
 !.github
 !.vscode/
+!.luarc.json
