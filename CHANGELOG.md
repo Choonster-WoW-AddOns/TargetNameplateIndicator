@@ -1,3 +1,6 @@
+## 1.42
+- Bump TOC Interface version to 9.2.5
+
 ## 1.41
 - Add support for custom textures (contributed by @markgravity)
 
