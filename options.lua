@@ -1,5 +1,3 @@
--- List globals here for Mikk's FindGlobals script
-
 local addon, TNI = ...
 local ACR = LibStub("AceConfigRegistry-3.0")
 local ACD = LibStub("AceConfigDialog-3.0")
