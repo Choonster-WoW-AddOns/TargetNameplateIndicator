@@ -26,3 +26,5 @@ manual-changelog:
 
 ignore:
     - Screenshots
+
+enable-toc-creation: yes
