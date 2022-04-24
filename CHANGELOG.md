@@ -1,3 +1,8 @@
+## 1.43
+- Add textures from Inokis of Curse
+- Add support for Classic/BC Classic
+	- This is untested, please report any errors
+
 ## 1.42
 - Bump TOC Interface version to 9.2.5
 
