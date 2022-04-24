@@ -41,6 +41,12 @@ local TEXTURE_NAMES = {
 	"Hunters_Mark",
 	"Arrows_Towards",
 	"Arrows_Away",
+	"Arrows_SelfTowards",
+	"Arrows_SelfAway",
+	"Arrows_FriendTowards",
+	"Arrows_FriendAway",
+	"Arrows_FocusTowards",
+	"Arrows_FocusAway",
 }
 
 -- Add the directory prefix to the texture names and localise the descriptions
