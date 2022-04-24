@@ -39,6 +39,8 @@ local TEXTURE_NAMES = {
 	"Q_RedTarget",
 	"Q_WhiteTarget",
 	"Hunters_Mark",
+	"Arrows_Towards",
+	"Arrows_Away",
 }
 
 -- Add the directory prefix to the texture names and localise the descriptions

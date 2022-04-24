@@ -38,6 +38,8 @@ L["Dropdown.Texture.Q_GreenTarget.Desc"]        = "Green target arrow"
 L["Dropdown.Texture.Q_RedTarget.Desc"]          = "Red target arrow"
 L["Dropdown.Texture.Q_WhiteTarget.Desc"]        = "White target arrow"
 L["Dropdown.Texture.Hunters_Mark.Desc"]         = "Red Hunter's Mark Arrow"
+L["Dropdown.Texture.Arrows_Towards.Desc"]       = "Arrows Towards Nameplate"
+L["Dropdown.Texture.Arrows_Away.Desc"]          = "Arrows Away Nameplate"
 
 L["Dropdown.RegionPoint.TOP.Desc"]         = "Top - The centre-point of the top side of the rectangle"
 L["Dropdown.RegionPoint.RIGHT.Desc"]       = "Right - The centre-point of the right side of the rectangle"
