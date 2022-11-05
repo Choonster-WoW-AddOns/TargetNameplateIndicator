@@ -26,5 +26,6 @@ manual-changelog:
 
 ignore:
     - Screenshots
+    - publish.ps1
 
 enable-toc-creation: yes
