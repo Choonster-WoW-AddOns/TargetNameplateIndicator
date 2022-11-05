@@ -1,3 +1,6 @@
+## 1.46
+- Bump TOC Interface version to 10.0.0
+
 ## 1.45
 - Bump TOC Interface version 9.2.7
 - Add support for WotLK Classic
