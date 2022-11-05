@@ -6,7 +6,7 @@
     ],
     "workspace.ignoreDir": [
         ".vscode",
-        "Interface (BlizzardIntefaceCode)"
+        "Interface (BlizzardInterfaceCode)"
     ],
     "telemetry.enable": false
 }
