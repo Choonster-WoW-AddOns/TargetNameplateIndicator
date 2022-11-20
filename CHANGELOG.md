@@ -1,3 +1,6 @@
+## 1.47
+- Bump TOC Interface version to 10.0.2
+
 ## 1.46
 - Bump TOC Interface version to 10.0.0
 
