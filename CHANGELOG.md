@@ -1,3 +1,7 @@
+## 1.48
+- Bump TOC Interface version to 10.1.5
+- Bump TOC Interface version for WotLK Classic to 3.4.2
+
 ## 1.47
 - Bump TOC Interface version to 10.0.2
 
