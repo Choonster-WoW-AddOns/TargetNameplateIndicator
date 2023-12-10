@@ -60,6 +60,7 @@ do
 			texture = "Interface\\AddOns\\TargetNameplateIndicator\\Textures\\Reticule",
 			height = 50,
 			width = 50,
+			frameStrata = "BACKGROUND",
 			opacity = 1,
 			texturePoint = "BOTTOM",
 			anchorPoint = "TOP",
@@ -156,6 +157,7 @@ function Indicator:Update(nameplate)
 			texture = config.textureCustom
 		end
 
+		self:SetFrameStrata(config.frameStrata)
 		self.Texture:Show()
 		self.Texture:SetTexture(texture)
 		self.Texture:SetSize(config.width, config.height)
