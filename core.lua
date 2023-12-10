@@ -10,7 +10,7 @@ local LNR = LibStub("LibNameplateRegistry-1.0")
 LibStub("AceAddon-3.0"):NewAddon(TNI, addon, "AceConsole-3.0")
 
 
---@debug@
+--@alpha@
 local DEBUG = false
 
 local function debugprint(...)
@@ -18,7 +18,9 @@ local function debugprint(...)
 		print("TNI DEBUG:", ...)
 	end
 end
---@end-debug@
+
+_G.TNI = TNI
+--@end-alpha@
 
 
 -----
@@ -92,11 +94,11 @@ function TNI:OnInitialize()
 
 	self:LNR_RegisterCallback("LNR_ERROR_FATAL_INCOMPATIBILITY", "OnError_FatalIncompatibility")
 
-	--@debug@
+	--@alpha@
 	if DEBUG then
 		TNI:LNR_RegisterCallback("LNR_DEBUG", debugprint)
 	end
-	--@end-debug@
+	--@end-alpha@
 end
 
 function TNI:OnEnable()
@@ -169,9 +171,9 @@ function Indicator:Refresh()
 end
 
 function Indicator:OnRecyclePlate(callback, nameplate, plateData)
-	--@debug@
+	--@alpha@
 	debugprint("Callback fired (recycle)", self.unit, nameplate == self.currentNameplate)
-	--@end-debug@
+	--@end-alpha@
 
 	if nameplate == self.currentNameplate then
 		self:Update()
@@ -262,9 +264,9 @@ function NonTargetIndicator:OnUpdate()
 
 	local shouldDisplay = self:CheckAndHideLowerPriorityIndicators()
 
-	--@debug@
+	--@alpha@
 	debugprint(self.unit, "changed", nameplate, "shouldDisplay?", shouldDisplay)
-	--@end-debug@
+	--@end-alpha@
 
 	-- If the nameplate for this indicator's unit doesn't already have a higher priority indicator displaying on it, update the indicator; otherwise hide it.
 	if shouldDisplay then
@@ -295,9 +297,9 @@ local TargetIndicator = CreateIndicator("target", 100)
 function TargetIndicator:PLAYER_TARGET_CHANGED()
 	local nameplate, plateData = self:GetPlateByGUID(UnitGUID("target"))
 
-	--@debug@
+	--@alpha@
 	debugprint("Player target changed", nameplate)
-	--@end-debug@
+	--@end-alpha@
 
 	if not nameplate then
 		self:Update()
@@ -305,9 +307,9 @@ function TargetIndicator:PLAYER_TARGET_CHANGED()
 end
 
 function TargetIndicator:OnTargetPlateOnScreen(callback, nameplate, plateData)
-	--@debug@
+	--@alpha@
 	debugprint("Callback fired (target found)")
-	--@end-debug@
+	--@end-alpha@
 
 	local shouldDisplay = self:CheckAndHideLowerPriorityIndicators()
 
