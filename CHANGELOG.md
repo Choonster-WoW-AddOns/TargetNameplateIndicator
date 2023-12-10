@@ -1,3 +1,6 @@
+## 1.51
+- Add missing localisation entries on CurseForge
+
 ## 1.50
 - Add option to control frame strata of indicator
 - Bump TOC Interface version to 10.2.0
