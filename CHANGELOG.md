@@ -1,3 +1,8 @@
+## 1.50
+- Add option to control frame strata of indicator
+- Bump TOC Interface version to 10.2.0
+- Bump TOC Interface version for Classic to 1.15.0
+
 ## 1.49
 - Bump TOC Interface version to 10.1.7
 - Bump TOC Interface version for Classic to 1.14.4
