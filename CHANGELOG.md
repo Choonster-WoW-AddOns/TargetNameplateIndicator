@@ -1,3 +1,7 @@
+## 1.52
+- Add green_arrow_down_11384 texture
+  - Suggested by Hayan of CurseForge, from [Iconpacks](https://iconpacks.net/?utm_source=link-attribution&utm_content=11384)
+
 ## 1.51
 - Add missing localisation entries on CurseForge
 
