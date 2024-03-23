@@ -1,3 +1,7 @@
+## 1.54
+- Bump TOC Interface version for Retail and Classic
+- Add TOC Interface version for Cataclysm Classic
+
 ## 1.53
 - Add missing localisation entries on CurseForge
 
