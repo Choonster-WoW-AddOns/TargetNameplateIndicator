@@ -1,3 +1,6 @@
+## 1.55
+- Bump TOC Interface version for Retail, Classic and WotLK Classic
+
 ## 1.54
 - Bump TOC Interface version for Retail and Classic
 - Add TOC Interface version for Cataclysm Classic
