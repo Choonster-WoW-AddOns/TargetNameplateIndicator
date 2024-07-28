@@ -1,3 +1,8 @@
+## 1.56
+- Bump TOC Interface version for Retail
+- Update slash command to use Settings API where available
+- Update libraries for 11.0.0
+
 ## 1.55
 - Bump TOC Interface version for Retail, Classic and WotLK Classic
 
