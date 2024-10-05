@@ -1,3 +1,7 @@
+# 1.57
+- Clean up code slightly
+- Bump TOC Interface version for Retail and Classic
+
 ## 1.56
 - Bump TOC Interface version for Retail
 - Update slash command to use Settings API where available
