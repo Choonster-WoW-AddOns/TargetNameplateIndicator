@@ -1,3 +1,6 @@
+# 1.58
+- Bump TOC Interface version for Retail, Classic and Cataclysm Classic
+
 # 1.57
 - Clean up code slightly
 - Bump TOC Interface version for Retail and Classic
