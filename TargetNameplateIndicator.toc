@@ -1,9 +1,9 @@
 ## Title: TargetNameplateIndicator
 ## Interface: 110002
-## Interface-Classic: 11504
+## Interface-Classic: 11505
 ## Interface-BCC: 20504
 ## Interface-Wrath: 30403
-## Interface-Cata: 40400
+## Interface-Cata: 40401
 ## Notes: Puts a texture on the nameplates of your target, mouseover and focus to make them stand out.
 ## Author: Choonster
 ## Version: @project-version@
