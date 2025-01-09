@@ -47,6 +47,13 @@ L["Dropdown.Texture.Arrows_FriendAway.Desc"]      = "Green Arrows Away From Name
 L["Dropdown.Texture.Arrows_FocusTowards.Desc"]    = "Yellow Arrows Towards Nameplate"
 L["Dropdown.Texture.Arrows_FocusAway.Desc"]       = "Yellow Arrows Away From Nameplate"
 L["Dropdown.Texture.green_arrow_down_11384.Desc"] = "Green arrow pointing downwards"
+L["Dropdown.Texture.CyanChevronArrow.Desc"]       = "Cyan inverted triple chevron"
+L["Dropdown.Texture.GreenChevronArrow.Desc"]      = "Green inverted triple chevron"
+L["Dropdown.Texture.PurpleChevronArrow.Desc"]     = "Purple inverted triple chevron"
+L["Dropdown.Texture.YellowChevronArrow.Desc"]     = "Yellow inverted triple chevron"
+L["Dropdown.Texture.NeonCyanArrow.Desc"]          = "Neon cyan arrow pointing downwards"
+L["Dropdown.Texture.NeonPurpleArrow.Desc"]        = "Neon purple arrow pointing downwards"
+L["Dropdown.Texture.NeonYellowArrow.Desc"]        = "Neon yellow arrow pointing downwards"
 
 L["Dropdown.FrameStrata.BACKGROUND.Desc"]         = "BACKGROUND"
 L["Dropdown.FrameStrata.LOW.Desc"]                = "LOW"

@@ -48,6 +48,13 @@ local TEXTURE_NAMES = {
 	"Arrows_FocusTowards",
 	"Arrows_FocusAway",
 	"green_arrow_down_11384",
+	"CyanChevronArrow",
+	"GreenChevronArrow",
+	"PurpleChevronArrow",
+	"YellowChevronArrow",
+	"NeonCyanArrow",
+	"NeonPurpleArrow",
+	"NeonYellowArrow",
 }
 
 -- Add the directory prefix to the texture names and localise the descriptions
