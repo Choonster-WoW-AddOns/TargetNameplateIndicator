@@ -201,10 +201,21 @@ function Indicator:CheckAndHideLowerPriorityIndicators()
 	return true
 end
 
--- Verfies that the current nameplate (if there is one) has a unit token and disables the indicator and throws an error if it doesn't.
+local GetNamePlateUnit
+if NamePlateBaseMixin and NamePlateBaseMixin.GetUnit then -- In Retail, use the GetUnit method
+	GetNamePlateUnit = function(nameplate)
+		return nameplate:GetUnit()
+	end
+else -- In Classic, use the namePlateUnitToken field
+	GetNamePlateUnit = function(nameplate)
+		return nameplate.namePlateUnitToken
+	end
+end
+
+-- Verifies that the current nameplate (if there is one) has a unit token and disables the indicator and throws an error if it doesn't.
 -- Returns true if there's no issue.
-function Indicator:VerifyNameplateUnitToken()
-	if self.currentNameplate and not self.currentNameplate.namePlateUnitToken then
+function Indicator:VerifyNameplateUnit()
+	if self.currentNameplate and not GetNamePlateUnit(self.currentNameplate) then
 		TNI.db.profile[self.unit].enable = false
 		self:Hide()
 
@@ -252,7 +263,7 @@ local NonTargetIndicator = {}
 
 function NonTargetIndicator:OnUpdate()
 	-- If there's a current nameplate and it's still this indicator's unit, do nothing
-	if self.currentNameplate and self:VerifyNameplateUnitToken() and UnitIsUnit(self.unit, self.currentNameplate.namePlateUnitToken) then
+	if self.currentNameplate and self:VerifyNameplateUnit() and UnitIsUnit(self.unit, GetNamePlateUnit(self.currentNameplate)) then
 		return
 	end
 
