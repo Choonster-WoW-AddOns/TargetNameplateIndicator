@@ -2,7 +2,7 @@ local addon, TNI = ...
 local ACR = LibStub("AceConfigRegistry-3.0")
 local ACD = LibStub("AceConfigDialog-3.0")
 local ACC = LibStub("AceConfigCmd-3.0")
-local frameref
+local frameRef, categoryID
 
 local L = LibStub("AceLocale-3.0"):GetLocale(addon)
 
@@ -392,9 +392,9 @@ local slash = slashes[1]
 function TNI:HandleChatCommand(input)
 	if input:trim() == "" then
 		if Settings and Settings.OpenToCategory then
-			Settings.OpenToCategory(addon)
+			Settings.OpenToCategory(categoryID)
 		else
-			InterfaceOptionsFrame_OpenToCategory(frameref)
+			InterfaceOptionsFrame_OpenToCategory(frameRef)
 		end
 	else
 		self:ACC_HandleCommand(slash, addon, input)
@@ -404,7 +404,7 @@ end
 function TNI:RegisterOptions()
 	options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
 	ACR:RegisterOptionsTable(addon, options)
-	frameref = ACD:AddToBlizOptions(addon)
+	frameRef, categoryID = ACD:AddToBlizOptions(addon)
 	for _, cmd in ipairs(slashes) do
 		self:RegisterChatCommand(cmd, "HandleChatCommand")
 	end
