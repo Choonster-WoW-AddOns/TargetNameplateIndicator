@@ -1,3 +1,9 @@
+# 1.62
+- Disable indicators when unit comparisons are restricted
+  - This currently disables the Target of Target indicator in instances
+- Use `C_NamePlate.GetNamePlateForUnit` instead of LNR's `GetPlateByGUID` to avoid using secret GUIDs
+- Fix error when opening settings from slash command
+
 # 1.61
 - Bump TOC Interface version for Retail, TBC Classic and MoP Classic
 - Update to support 12.0 nameplate changes
