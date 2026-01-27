@@ -137,18 +137,23 @@ TNI.Indicators = {}
 --- @field LNR_RegisterCallback fun(self: Indicator, eventName: string, callbackName: string)
 local Indicator = {}
 
-function Indicator:Update(nameplate)
+function Indicator:Update(nameplate, skipConfigCheck)
 	self.currentNameplate = nameplate
 	self.Texture:ClearAllPoints()
 
-	local unitConfig = TNI.db.profile[self.unit]
-	local config = UnitIsUnit("player", self.unit) and unitConfig.self or
-		UnitIsFriend("player", self.unit) and unitConfig.friendly or unitConfig.hostile
+	local config
+	if not skipConfigCheck then
+		local unitConfig = TNI.db.profile[self.unit]
 
-	self:SetShown(unitConfig.enable)
-	self.enabled = unitConfig.enable;
+		config = UnitIsUnit("player", self.unit) and unitConfig.self or
+			UnitIsFriend("player", self.unit) and unitConfig.friendly or
+			unitConfig.hostile
 
-	if nameplate and config.enable then
+		self:SetShown(unitConfig.enable)
+		self.enabled = unitConfig.enable;
+	end
+
+	if nameplate and config and config.enable then
 		local texture = config.texture
 		if texture == "custom" then
 			texture = config.textureCustom
@@ -267,7 +272,7 @@ function NonTargetIndicator:Disable()
 	debugprint(self.unit, "Disabling due to secret restrictions")
 	--@end-alpha@
 
-	self:Update(nil)
+	self:Update(nil, true)
 	self.enabled = false
 	self:Hide()
 end
