@@ -1,3 +1,6 @@
+# 1.63
+- Fix secret comparison error for Target of Target indicator
+
 # 1.62
 - Disable indicators when unit comparisons are restricted
   - This currently disables the Target of Target indicator in instances
