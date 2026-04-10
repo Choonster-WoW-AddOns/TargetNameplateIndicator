@@ -1,3 +1,8 @@
+# 1.64
+- Disable Target of Target indicator in Retail due to new restrictions on `C_NamePlate.GetNamePlateForUnit`
+- Fix incorrect concatenation in `TNI:RefreshIndicator`
+- Bump TOC Interface version for Retail
+
 # 1.63
 - Fix secret comparison error for Target of Target indicator
 
