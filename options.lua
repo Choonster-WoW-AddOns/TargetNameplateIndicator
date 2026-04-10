@@ -373,7 +373,7 @@ local options = {
 				target = CreateUnitConfigTable("target"),
 				mouseover = CreateUnitConfigTable("mouseover"),
 				focus = CreateUnitConfigTable("focus"),
-				targettarget = CreateUnitConfigTable("targettarget"),
+				targettarget = not TNI.hasSecretRestrictions and CreateUnitConfigTable("targettarget") or nil,
 			},
 		},
 	},

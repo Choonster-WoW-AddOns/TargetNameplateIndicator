@@ -86,6 +86,10 @@ do
 	}
 end
 
+local hasSecretRestrictions = C_Secrets and C_Secrets.ShouldUnitComparisonBeSecret and true or false
+
+TNI.hasSecretRestrictions = hasSecretRestrictions
+
 function TNI:OnInitialize()
 	LNR:Embed(self)
 	self.db = LibStub("AceDB-3.0"):New("TargetNameplateIndicatorDB", defaults, true)
@@ -116,7 +120,7 @@ function TNI:RefreshIndicator(unit)
 	local indicator = self.Indicators[unit]
 
 	if not indicator then
-		error("Invalid unit \"" + unit + "\"")
+		error("Invalid unit \"" .. unit .. "\"")
 	end
 
 	indicator:Refresh()
@@ -264,8 +268,6 @@ end
 
 --- @class NonTargetIndicator : Indicator
 local NonTargetIndicator = {}
-
-local hasSecretRestrictions = C_Secrets and C_Secrets.ShouldUnitComparisonBeSecret and true or false
 
 function NonTargetIndicator:Disable()
 	--@alpha@
@@ -416,4 +418,4 @@ local FocusIndicator = CreateNonTargetIndicator("focus", 90)
 ------
 
 ---@diagnostic disable-next-line: unused-local
-local TargetOfTargetIndicator = CreateNonTargetIndicator("targettarget", 50)
+local TargetOfTargetIndicator = not hasSecretRestrictions and CreateNonTargetIndicator("targettarget", 50) or nil
