@@ -1,3 +1,6 @@
+# 1.65
+- Bump TOC Interface version for Retail, Classic, TBC Classic and MoP Classic
+
 # 1.64
 - Disable Target of Target indicator in Retail due to new restrictions on `C_NamePlate.GetNamePlateForUnit`
 - Fix incorrect concatenation in `TNI:RefreshIndicator`
