@@ -79,6 +79,7 @@ do
 	defaults = {
 		profile = {
 			target = CreateUnitDefaults(),
+			softenemy = CreateUnitDefaults(),
 			mouseover = CreateUnitDefaults(),
 			focus = CreateUnitDefaults(),
 			targettarget = CreateUnitDefaults(),
@@ -403,6 +404,14 @@ TargetIndicator:LNR_RegisterCallback("LNR_ON_TARGET_PLATE_ON_SCREEN", "OnTargetP
 
 ---@diagnostic disable-next-line: unused-local
 local MouseoverIndicator = CreateNonTargetIndicator("mouseover", 10)
+
+
+------
+-- Soft Target Indicator
+------
+
+---@diagnostic disable-next-line: unused-local
+local SoftTargetIndicator = CreateNonTargetIndicator("softenemy", 80)
 
 
 ------

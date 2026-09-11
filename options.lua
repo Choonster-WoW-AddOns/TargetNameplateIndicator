@@ -371,6 +371,7 @@ local options = {
 			type = "group",
 			args = {
 				target = CreateUnitConfigTable("target"),
+				softenemy = CreateUnitConfigTable("softenemy"),
 				mouseover = CreateUnitConfigTable("mouseover"),
 				focus = CreateUnitConfigTable("focus"),
 				targettarget = not TNI.hasSecretRestrictions and CreateUnitConfigTable("targettarget") or nil,
