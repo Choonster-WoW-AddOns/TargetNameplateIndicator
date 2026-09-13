@@ -19,6 +19,12 @@ local function debugprint(...)
 end
 
 _G.TNI = TNI
+
+local changeThrottleUnits = {
+	mouseover = true,
+	softenemy = true,
+	softfriend = true,
+}
 --@end-alpha@
 
 
@@ -317,7 +323,17 @@ function NonTargetIndicator:OnUpdate()
 	local shouldDisplay = self:CheckAndHideLowerPriorityIndicators()
 
 	--@alpha@
-	if self.unit ~= "mouseover" then
+	local shouldPrint = true
+	if changeThrottleUnits[self.unit] then
+		local currentTime = GetTime()
+		if not self.lastChangeTime or (currentTime - self.lastChangeTime) > 30 then
+			self.lastChangeTime = currentTime
+		else
+			shouldPrint = false
+		end
+	end
+
+	if shouldPrint then
 		debugprint(self.unit, "changed", nameplate, "shouldDisplay?", shouldDisplay)
 	end
 	--@end-alpha@
