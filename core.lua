@@ -407,12 +407,14 @@ local MouseoverIndicator = CreateNonTargetIndicator("mouseover", 10)
 
 
 ------
--- Soft Target Indicator
+-- Soft Target Indicators
 ------
 
 ---@diagnostic disable-next-line: unused-local
-local SoftTargetIndicator = CreateNonTargetIndicator("softenemy", 80)
+local SoftEnemyIndicator = CreateNonTargetIndicator("softenemy", 80)
 
+---@diagnostic disable-next-line: unused-local
+local SoftFriendIndicator = CreateNonTargetIndicator("softfriend", 80)
 
 ------
 -- Focus Indicator

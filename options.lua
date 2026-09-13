@@ -205,7 +205,7 @@ local function validateFractionalNumber(info, val)
 	return true
 end
 
-local function CreateUnitRectionTypeConfigTable(unit, unitReactionType, order)
+local function CreateUnitReactionTypeConfigTable(unit, unitReactionType, order)
 	local index = 0
 
 	local function nextIndex()
@@ -343,7 +343,13 @@ local function CreateUnitRectionTypeConfigTable(unit, unitReactionType, order)
 	}
 end
 
-local function CreateUnitConfigTable(unit)
+---
+---@param unit string
+---@param includeSelf? boolean
+---@param includeFriendly? boolean
+---@param includeHostile? boolean
+---@return table
+local function CreateUnitConfigTable(unit, includeSelf, includeFriendly, includeHostile)
 	return {
 		name = L[("Group.%s.Name"):format(unit)],
 		type = "group",
@@ -354,9 +360,9 @@ local function CreateUnitConfigTable(unit)
 				desc = L["Option.Unit.enable.Desc"],
 				type = "toggle",
 			},
-			self = CreateUnitRectionTypeConfigTable(unit, "self", 1),
-			friendly = CreateUnitRectionTypeConfigTable(unit, "friendly", 2),
-			hostile = CreateUnitRectionTypeConfigTable(unit, "hostile", 3),
+			self = includeSelf ~= false and CreateUnitReactionTypeConfigTable(unit, "self", 1) or nil,
+			friendly = includeFriendly ~= false and CreateUnitReactionTypeConfigTable(unit, "friendly", 2) or nil,
+			hostile = includeHostile ~= false and CreateUnitReactionTypeConfigTable(unit, "hostile", 3) or nil,
 		},
 	}
 end
@@ -371,7 +377,8 @@ local options = {
 			type = "group",
 			args = {
 				target = CreateUnitConfigTable("target"),
-				softenemy = CreateUnitConfigTable("softenemy"),
+				softenemy = CreateUnitConfigTable("softenemy", false, false, true),
+				softfriend = CreateUnitConfigTable("softfriend", true, true, false),
 				mouseover = CreateUnitConfigTable("mouseover"),
 				focus = CreateUnitConfigTable("focus"),
 				targettarget = not TNI.hasSecretRestrictions and CreateUnitConfigTable("targettarget") or nil,

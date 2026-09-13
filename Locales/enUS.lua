@@ -81,7 +81,8 @@ L["Usage.FractionalNumber"]                       = "Must be a number between 0 
 L["Group.indicators.Name"]                        = "Unit Indicator Options"
 
 L["Group.target.Name"]                            = "Target"
-L["Group.softenemy.Name"]                         = "Soft Target"
+L["Group.softenemy.Name"]                         = "Soft Target (Hostile)"
+L["Group.softfriend.Name"]                        = "Soft Target (Friendly)"
 L["Group.mouseover.Name"]                         = "Mouseover"
 L["Group.focus.Name"]                             = "Focus"
 L["Group.targettarget.Name"]                      = "Target of Target"
@@ -94,9 +95,10 @@ L["Group.target.self.Desc"]                       = "These options are used when
 L["Group.target.friendly.Desc"]                   = "These options are used for friendly targets"
 L["Group.target.hostile.Desc"]                    = "These options are used for hostile targets"
 
-L["Group.softenemy.self.Desc"]                    = "These options are used when soft-targeting yourself"
-L["Group.softenemy.friendly.Desc"]                = "These options are used for friendly soft targets"
 L["Group.softenemy.hostile.Desc"]                 = "These options are used for hostile soft targets"
+
+L["Group.softfriend.self.Desc"]                   = "These options are used when soft-targeting yourself"
+L["Group.softfriend.friendly.Desc"]               = "These options are used for friendly soft targets"
 
 L["Group.mouseover.self.Desc"]                    = "These options are used when mousing over yourself"
 L["Group.mouseover.friendly.Desc"]                = "These options are used for friendly mouseovers"
