@@ -1,3 +1,6 @@
+# 1.66
+- Add Soft Target indicators (partial contribution by @Pevtrick)
+
 # 1.65
 - Bump TOC Interface version for Retail, Classic, TBC Classic and MoP Classic
 
