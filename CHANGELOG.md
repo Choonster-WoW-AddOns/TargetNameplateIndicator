@@ -1,3 +1,6 @@
+# 1.67
+- Add missing localisation entries on CurseForge
+
 # 1.66
 - Add Soft Target indicators (partial contribution by @Pevtrick)
 
